@@ -2,6 +2,35 @@
 
 /*! elementor - v3.5.4 - 23-01-2022 */
 
+// SCROLL-BAR
+
+.scrollable-element {
+	scrollbar-color: red yellow;
+  }
+
+::-webkit-scrollbar {
+	/* width: 10px; */
+	width: 17px;
+	height: 7px;
+  }
+  
+  ::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 15px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+	/* background: #888; */
+	background: #0044b8c4;
+	// border-radius: 15px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+	background: #003e9175;
+  }
+
+  // THEME CSS
+
 .dialog-widget-content {
 	background-color: #fff;
 	position: absolute;

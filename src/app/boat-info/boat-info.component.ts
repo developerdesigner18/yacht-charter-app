@@ -15,12 +15,10 @@ export class BoatInfoComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.boat_name = params.boat_name;
-      window.scroll(0, 0)
+      if (this.boat_name === null || this.boat_name === undefined) {
+        this.boat_name = 'Default Vessel'
+      }
     });
-
-    if (this.boat_name === null) {
-      this.boat_name = 'Default Vessel'
-    }
   }
 
 }

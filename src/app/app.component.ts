@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private title: Title, private meta: Meta) {}
+  constructor(private router: Router, private route: ActivatedRoute, private title: Title, private meta: Meta) {}
 
   ngOnInit(): void {
     // Modification of the title
@@ -18,5 +19,11 @@ export class AppComponent {
         name: 'description',
         content: 'The best way to get a charter or buy a boat from a web site with great user experience'
     })
+
+    this.router.events.subscribe((val) => {
+      // see also 
+      window.scroll(0, 0)
+  });
+
   }
 }

@@ -23,7 +23,7 @@
 	<meta property="og:url" content="http://gullanco.se/">
 	<meta property="og:site_name" content="TWW Yachts">
 	<meta property="article:modified_time" content="2021-12-09T09:18:16+00:00">
-	<!-- <meta property="og:image" content="https://www.twwyachts.com/wp-content/uploads/2020/02/qs-2.jpg"> -->
+	<meta property="og:image" content="/assets/images/qs-2.jpg">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="800">
 	<meta name="twitter:card" content="summary_large_image">
@@ -551,7 +551,7 @@
 	</script> -->
 
 	<!-- Global site tag (gtag.js) - Google Ads: 820685573 -->
-	<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-820685573"></script>
+	<!-- <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-820685573"></script> -->
 	<!-- <script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
@@ -1107,9 +1107,9 @@
 			}
 		}
 	</style> -->
-	<style type="text/css">
-		/** Mega Menu CSS: fs **/
-	</style>
+	<!-- <style type="text/css">
+		/* * Mega Menu CSS: fs * */
+	</style> -->
 	<link type="text/css" rel="stylesheet"
 		href="https://fast.fonts.net/t/1.css?apiType=css&amp;projectid=077135f4-c838-42da-9292-2a5ca462fff6">
 	<style type="text/css">
@@ -1134,7 +1134,7 @@
 							playsinline="" loop=""
 							src="https://www.twwyachts.com/wp-content/uploads/2021/12/HOMEPAGE-Video-Unlooped.mp4"
 							style="width: 1423px; height: 800.438px;"></video> */
-						<video class="elementor-background-video-hosted elementor-html5-video" autoplay="true" muted=""
+						<video class="elementor-background-video-hosted elementor-html5-video" autoplay="true" muted="true"
 							playsinline="" loop="true"
 							src="https://player.vimeo.com/progressive_redirect/playback/603835040/rendition/720p?loc=external&oauth2_token_id=1269526533&signature=679a67b228bd147115ec07bd804fcabbda6cdccd5e3a9e1195ba48fcd58a442e"
 							style="width: 1423px; height: 800.438px;"></video>
@@ -1150,9 +1150,10 @@
 											data-id="92d1d9c" data-element_type="widget"
 											data-widget_type="heading.default">
 											<div class="elementor-widget-container">
-												<h2 class="elementor-heading-title elementor-size-default">It's your
+												<!-- <h2 class="elementor-heading-title elementor-size-default">It's your
 													yacht to enjoy.<br>
-													We will take care of the rest.</h2>
+													We will take care of the rest.</h2> -->
+												<h2 class="elementor-heading-title elementor-size-default">Explore. Discover. Live.</h2>
 											</div>
 										</div>
 									</div>
@@ -1328,7 +1329,7 @@
 											data-widget_type="button.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-button-wrapper">
-													<a href="https://www.twwyachts.com/yachts-for-sale/"
+													<a [routerLink]="['/brokered-boats']"
 														class="elementor-button-link elementor-button elementor-size-sm"
 														role="button">
 														<span class="elementor-button-content-wrapper">
@@ -1396,14 +1397,11 @@
 																	data-widget_type="button.default">
 																	<div class="elementor-widget-container">
 																		<div class="elementor-button-wrapper">
-																			<a href="https://www.twwyachts.com/yacht-crew/superyacht-recruitment/"
+																			<a [routerLink]="['/']"
 																				class="elementor-button-link elementor-button elementor-size-sm"
 																				role="button">
-																				<span
-																					class="elementor-button-content-wrapper">
-																					<span
-																						class="elementor-button-text">FIND
-																						crew</span>
+																				<span class="elementor-button-content-wrapper">
+																					<span class="elementor-button-text">FIND CREW</span>
 																				</span>
 																			</a>
 																		</div>
@@ -1421,14 +1419,11 @@
 																	data-widget_type="button.default">
 																	<div class="elementor-widget-container">
 																		<div class="elementor-button-wrapper">
-																			<a href="https://www.twwyachts.com/yacht-crew/jobs/"
+																			<a [routerLink]="['/']"
 																				class="elementor-button-link elementor-button elementor-size-sm"
 																				role="button">
-																				<span
-																					class="elementor-button-content-wrapper">
-																					<span
-																						class="elementor-button-text">Find
-																						a Job</span>
+																				<span class="elementor-button-content-wrapper">
+																					<span class="elementor-button-text">Find A JOB</span>
 																				</span>
 																			</a>
 																		</div>
