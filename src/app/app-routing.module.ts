@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'brokered-boats', loadChildren: () => import('./brokered-boats/brokered-boats.module').then(m => m.BrokeredBoatsModule) },
   { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
   { path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) },
-  { path: 'admin', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) , canActivate: [AuthGuard] }
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] }
 ];
 
 @NgModule({
