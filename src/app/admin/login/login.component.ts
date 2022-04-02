@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import * as Notiflix from 'notiflix';
+import { CryptoService } from '../../services/crypto.service'; 
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public formbuilder: FormBuilder,
+    private router: Router,
     private loginService: LoginService,
+    private cryptoService: CryptoService,
   ) { }
 
   ngOnInit(): void {
@@ -37,22 +41,24 @@ export class LoginComponent implements OnInit {
 
     const { value } = this.loginForm;
 
-    Notiflix.Loading.circle({
+    Notiflix.Loading.standard({
       cssAnimationDuration: 2000,
-      backgroundColor: '#ffffff',
+      backgroundColor: '0, 0, 0, 0.0',
     },
     )
     this.loginService.adminLogin(value).subscribe(
       res => {
         if (res.success) {
           Notiflix.Loading.remove();
-          Notiflix.Notify.success('Sol lucet omnibus');
-          // localStorage.setItem('user_info', res.data.emp_name);
-          // localStorage.setItem('isq_password', value.password);
-
+          Notiflix.Notify.success('User successfully Logged In.');
+          
+          localStorage.setItem('u_info', this.cryptoService.encrypt(JSON.stringify(res.data)));
+          localStorage.setItem('auth_token', res.token);
+          
+          this.router.navigateByUrl('/admin/admin-dashboard')
         } else {
-          Notiflix.Loading.remove();
-          Notiflix.Notify.failure('Qui timide rogat docet negare');
+          Notiflix.Loading.remove();          
+          Notiflix.Notify.failure(res.error);
           // this.broadcastService.sendToastMessage({
           //   msgTitle: 'Error',
           //   msgType: 'error',
@@ -63,7 +69,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         Notiflix.Loading.remove();
-        Notiflix.Notify.failure('Qui timide rogat docet negare');
+        Notiflix.Notify.failure(err.error);
         // this.broadcastService.handleError(err.error.message);
       }
     );
