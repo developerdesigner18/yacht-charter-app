@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
           
           this.router.navigateByUrl('/admin/admin-dashboard')
         } else {
-          Notiflix.Loading.remove();          
+          Notiflix.Loading.remove();
           Notiflix.Notify.failure(res.error);
           // this.broadcastService.sendToastMessage({
           //   msgTitle: 'Error',

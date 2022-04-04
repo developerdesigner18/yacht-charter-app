@@ -1130,10 +1130,13 @@
 							playsinline="" loop=""
 							src="https://www.twwyachts.com/wp-content/uploads/2021/12/HOMEPAGE-Video-Unlooped.mp4"
 							style="width: 1423px; height: 800.438px;"></video> -->
-						<video class="elementor-background-video-hosted elementor-html5-video" autoplay="true" muted="true"
-							playsinline="" loop="true"
-							src="/assets/videos/home-page-video-unlooped.mp4"
-							style="width: 1423px; height: 800.438px;"></video>
+						<video class="elementor-background-video-hosted elementor-html5-video" oncanplay="this.play()" onloadedmetadata="this.muted=true"
+							loop="true" playsinline style="width: 1423px; height: 800.438px;"
+							poster="/assets/backgrounds/login/JUH_4269.jpg">
+							<source src="{{BASE_URI}}/{{homeData?.media.landing_video}}" />
+							<p>Your browser does not support the HTML5 video tag. Here is
+								a <a href="{{BASE_URI}}/{{homeData?.media.landing_video}}" target="_blank">link to the video</a> instead.</p>
+						</video>
 					</div>
 					<div class="elementor-container elementor-column-gap-no">
 						<div class="elementor-row">
@@ -1149,7 +1152,7 @@
 												<!-- <h2 class="elementor-heading-title elementor-size-default">It's your
 													yacht to enjoy.<br>
 													We will take care of the rest.</h2> -->
-												<h2 class="elementor-heading-title elementor-size-default">Explore. Discover. Live.</h2>
+												<h2 class="elementor-heading-title elementor-size-default" [innerHtml]="homeData?.content.tag_line"></h2>
 											</div>
 										</div>
 									</div>
@@ -1173,8 +1176,7 @@
 											data-id="d3cf637" data-element_type="widget"
 											data-widget_type="heading.default">
 											<div class="elementor-widget-container">
-												<h1 class="elementor-heading-title elementor-size-default">YACHTS
-													CHARTER</h1>
+												<h1 class="elementor-heading-title elementor-size-default" [innerHtml]="homeData?.content.heading_1"></h1>
 											</div>
 										</div>
 										<div class="elementor-element elementor-element-ed1d7f0 elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
@@ -1200,14 +1202,7 @@
 											data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-text-editor elementor-clearfix">
-													<p>A collective authority on superyachts, with offices in every
-														vital yachting hub across Europe and its head office in Sweden,
-														Yacht Charter specializes in yacht sales, yacht purchase, charter
-														and new build/construction.&nbsp;</p>
-													<p>&nbsp;</p>
-													<p>In addition, we provide essential services including charter
-														management, yacht management, crew placement and technical
-														support.</p>
+													<p [innerHtml]="homeData?.content.description_1"></p>
 												</div>
 											</div>
 										</div>
@@ -1239,8 +1234,7 @@
 											data-id="27e4e79" data-element_type="widget"
 											data-widget_type="heading.default">
 											<div class="elementor-widget-container">
-												<h2 class="elementor-heading-title elementor-size-default">OUR SERVICES
-												</h2>
+												<h2 class="elementor-heading-title elementor-size-default" [innerHtml]="homeData?.content.heading_2"></h2>
 											</div>
 										</div>
 										<div class="elementor-element elementor-element-372a0a0 elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
@@ -1276,9 +1270,8 @@
 											<div class="elementor-widget-container">
 												<div class="elementor-image">
 													<img width="525" height="322"
-														src="https://www.twwyachts.com/wp-content/uploads/2021/04/DJI_0334-1024x628.jpg"
-														class="attachment-large size-large" alt="" loading="lazy"
-														srcset="https://www.twwyachts.com/wp-content/uploads/2021/04/DJI_0334-1024x628.jpg 1024w, https://www.twwyachts.com/wp-content/uploads/2021/04/DJI_0334-300x184.jpg 300w, https://www.twwyachts.com/wp-content/uploads/2021/04/DJI_0334-768x471.jpg 768w, https://www.twwyachts.com/wp-content/uploads/2021/04/DJI_0334-1536x943.jpg 1536w, https://www.twwyachts.com/wp-content/uploads/2021/04/DJI_0334-2048x1257.jpg 2048w"
+														src="{{BASE_URI}}/{{homeData?.media.image_1}}"
+														class="attachment-large size-large" alt="Boat Image" loading="lazy"
 														sizes="100vw">
 												</div>
 											</div>
@@ -1295,8 +1288,7 @@
 											data-id="0b6de01" data-element_type="widget"
 											data-widget_type="heading.default">
 											<div class="elementor-widget-container">
-												<h4 class="elementor-heading-title elementor-size-default">THE
-													DEFINITIVE ASSET</h4>
+												<h4 class="elementor-heading-title elementor-size-default" [innerHtml]="homeData?.content.sub_heading_2"></h4>
 											</div>
 										</div>
 										<div class="elementor-element elementor-element-106d50b elementor-widget elementor-widget-heading"
@@ -1312,11 +1304,7 @@
 											data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-text-editor elementor-clearfix">
-													<p>A combination of expertise, knowledge, experience and
-														solution-driven approach ensures an efficient, enjoyable
-														experience. Offering a 360° perspective of the sales and
-														purchase processes from initial negotiations through to the
-														closing, we’re here to guide you every step of the way.</p>
+													<p [innerHtml]="homeData?.content.description_2"></p>
 												</div>
 											</div>
 										</div>
@@ -1355,8 +1343,7 @@
 											data-id="86b93c0" data-element_type="widget"
 											data-widget_type="heading.default">
 											<div class="elementor-widget-container">
-												<h4 class="elementor-heading-title elementor-size-default">PEOPLE FIRST
-												</h4>
+												<h4 class="elementor-heading-title elementor-size-default" [innerHtml]="homeData?.content.heading_3"></h4>
 											</div>
 										</div>
 										<div class="elementor-element elementor-element-aa6ca9a elementor-widget elementor-widget-heading"
@@ -1372,10 +1359,7 @@
 											data-widget_type="text-editor.default">
 											<div class="elementor-widget-container">
 												<div class="elementor-text-editor elementor-clearfix">
-													<p>A great yacht deserves the right crew, with the correct skillset
-														to best fit everyone’s needs. Our in-house dedicated crew
-														service team uses a vast network of contacts and thorough
-														research to find the best candidates to match your vessel.</p>
+													<p [innerHtml]="homeData?.content.description_3"></p>
 												</div>
 											</div>
 										</div>
@@ -1434,7 +1418,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-e23df7c"
+							<!-- <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-e23df7c"
 								data-id="e23df7c" data-element_type="column">
 								<div class="elementor-column-wrap elementor-element-populated">
 									<div class="elementor-widget-wrap">
@@ -1454,7 +1438,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</section>

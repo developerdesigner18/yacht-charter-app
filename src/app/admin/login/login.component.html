@@ -5,17 +5,17 @@
                 <div class="vertial-adjust">
                 <div class="logo">
                     <img src="assets/icons/dummy-yacht-logo.png" width="80%"/>
-                    <h1 class="ehms-logo">Yacht Charter Admin</h1>
+                    <h1 class="logo-text">Admin Login</h1>
                 </div>
                 <div class="email_row">
-                    <label for="email_row">E-mail ID</label>
+                    <!-- <label for="email_row">E-mail ID</label> -->
                     <input type="text" class="email_text" placeholder="E-mail ID" formControlName="email" />
                 </div>
                 <div class="validation-errors" *ngIf="getControlValidation('email')">
                     <span> E-mail ID is required</span>
                 </div>
                 <div class="password_row">
-                    <label for="password_row">Password</label>
+                    <!-- <label for="password_row">Password</label> -->
                     <input type="password" class="password_text" placeholder="Password" formControlName="password"/>
                 </div>
                 <div class="validation-errors" *ngIf="getControlValidation('password')">

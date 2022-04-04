@@ -21,5 +21,5 @@ export class LoginService {
     password: string;
   }): Observable<any> {
     return this.http.post(`${this.BASE_URI}/auth/signin`, payload);
-}
+  }
 }
