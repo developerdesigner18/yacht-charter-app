@@ -11,7 +11,7 @@ export class LoginService {
   private BASE_URI: string;
 
   constructor(
-    private http: HttpClient
+    private httpClient: HttpClient
   ) {
     this.BASE_URI = environment.apiUrl;
   }
@@ -20,6 +20,6 @@ export class LoginService {
     username: string;
     password: string;
   }): Observable<any> {
-    return this.http.post(`${this.BASE_URI}/auth/signin`, payload);
+    return this.httpClient.post(`${this.BASE_URI}/auth/signin`, payload);
   }
 }

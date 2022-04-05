@@ -8,7 +8,9 @@ const routes: Routes = [
   { path: 'brokered-boats', loadChildren: () => import('./brokered-boats/brokered-boats.module').then(m => m.BrokeredBoatsModule) },
   { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
   { path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] }
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] },
+  { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
+  { path: 'q-spd-drives', loadChildren: () => import('./q-spd/q-spd.module').then(m => m.QSpdModule) }
 ];
 
 @NgModule({

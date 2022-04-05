@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
-import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,16 +12,15 @@ export class HomeService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(
-    private http: HttpClient
+    private httpClient: HttpClient
   ) {
     this.BASE_URI = environment.apiUrl;
   }
 
   getHomeData(
   ): Observable<any> {
-    return this.http.get(`${this.BASE_URI}/api/home/getHomeData`, { headers: { Authorization: localStorage.getItem('token') } }).pipe(
+    return this.httpClient.get(`${this.BASE_URI}/api/home/getHomeData`).pipe(
       catchError(this.handleError)
-
     )
   }
 
