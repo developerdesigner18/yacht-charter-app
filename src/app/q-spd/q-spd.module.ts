@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { QSpdRoutingModule } from './q-spd-routing.module';
 import { QSpdComponent } from './q-spd.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { QSpdComponent } from './q-spd.component';
   ],
   imports: [
     CommonModule,
-    QSpdRoutingModule
+    QSpdRoutingModule,
+    NgImageSliderModule
   ]
 })
 export class QSpdModule { }

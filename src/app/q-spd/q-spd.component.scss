@@ -7208,3 +7208,15 @@ body.elementor-page .elementor-widget-menu-anchor {
     -o-object-fit: cover;
     object-fit: cover
 }
+
+::ng-deep .ng-image-slider .ng-image-slider-container .main .main-inner .img-div img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: auto !important;
+    width: auto !important;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+}
