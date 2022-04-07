@@ -3,7 +3,6 @@ import { TimelineLite, Back, Power1 } from 'gsap';
 import SlowMo from "gsap"
 import { HomeService } from './home.service';
 import * as Notiflix from 'notiflix';
-
 import { environment } from '../../environments/environment';
 
 @Component({

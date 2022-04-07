@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BoatInfoService } from './boat-info.service';
+import * as Notiflix from 'notiflix';
+import { Location } from '@angular/common';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-boat-info',
@@ -7,16 +11,35 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./boat-info.component.scss']
 })
 export class BoatInfoComponent implements OnInit {
+  BASE_URI: string;
+  boatInfoData: any;
 
-  boat_name: any;
-  
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private boatInfoService: BoatInfoService,
+    ) {
+      this.BASE_URI = environment.apiUrl;
+    }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.boat_name = params.boat_name;
-      if (this.boat_name === null || this.boat_name === undefined) {
-        this.boat_name = 'Default Vessel'
+      var bid = params.bid;
+      if (bid === null || bid === undefined) {
+        Notiflix.Notify.failure('This Boat is currently not available.');
+        this.location.back()
+      } else {
+        this.boatInfoService.getBoatInfoById(bid).subscribe(
+          res => {
+            this.boatInfoData = res.data
+            console.log('###', this.boatInfoData);
+            
+            if (!res.success) { Notiflix.Notify.failure(res.error); }
+          },
+          err => {        
+            Notiflix.Notify.failure(err.error.message);
+          }
+        );
       }
     });
   }

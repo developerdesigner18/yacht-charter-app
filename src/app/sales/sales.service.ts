@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
 
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class BoatInfoService {
+export class SalesService {
   private BASE_URI: string;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -17,9 +17,9 @@ export class BoatInfoService {
     this.BASE_URI = environment.apiUrl;
   }
 
-  getBoatInfoById(bid: any
+  getBoatInfoAll(
     ): Observable<any> {
-      return this.httpClient.get(`${this.BASE_URI}/api/boat/getBoatInfoById`, { params: { bid: bid } }).pipe(
+      return this.httpClient.get(`${this.BASE_URI}/api/boat/getBoatInfoAll`).pipe(
         catchError(this.handleError)
       )
     }
@@ -35,5 +35,5 @@ export class BoatInfoService {
       }
       return throwError(msg);
     }
-  
+    
 }

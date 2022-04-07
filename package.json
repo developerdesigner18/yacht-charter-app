@@ -7,6 +7,7 @@
     "start": "ng serve",
     "prebuild": "git pull && npm install",
     "build": "ng build --prod",
+    "dev": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

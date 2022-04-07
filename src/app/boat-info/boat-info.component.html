@@ -2531,12 +2531,12 @@
         src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/820685573/?random=1646742882733&amp;cv=9&amp;fst=1646742882733&amp;num=1&amp;bg=ffffff&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;u_h=900&amp;u_w=1440&amp;u_ah=860&amp;u_aw=1440&amp;u_cd=24&amp;u_his=1&amp;u_tz=330&amp;u_java=false&amp;u_nplug=5&amp;u_nmime=2&amp;gtm=2oa370&amp;sendb=1&amp;ig=1&amp;data=event%3Dgtag.config&amp;frm=0&amp;url=https%3A%2F%2Fwww.twwyachts.com%2Fyachts-for-sale%2Fsoaring-262466%2F&amp;hn=www.googleadservices.com&amp;async=1&amp;rfmt=3&amp;fmt=4"></script>
     <link type="text/css" rel="stylesheet"
         href="https://fast.fonts.net/t/1.css?apiType=css&amp;projectid=077135f4-c838-42da-9292-2a5ca462fff6">
-    <title>{{boat_name}} for Sale - {{boat_name}} Price - TWW</title>
+    <title>{{boatInfoData?.boat_info.name}} for Sale - {{boatInfoData?.boat_info.name}} Price</title>
     <meta name="description"
-        content="{{boat_name}} for Sale is a ABEKING &amp; RASMUSSEN delivered in 2020, asking price of Price on Application">
+        content="{{boatInfoData?.boat_info.name}} for Sale is a ABEKING &amp; RASMUSSEN delivered in 2020, asking price of Price on Application">
     <meta propery="og:description"
-        content="{{boat_name}} for Sale is a ABEKING &amp; RASMUSSEN delivered in 2020, asking price of Price on Application">
-    <meta propery="og:title" content="{{boat_name}} for Sale - {{boat_name}} Price - TWW">
+        content="{{boatInfoData?.boat_info.name}} for Sale is a ABEKING &amp; RASMUSSEN delivered in 2020, asking price of Price on Application">
+    <meta propery="og:title" content="{{boatInfoData?.boat_info.name}} for Sale - {{boatInfoData?.boat_info.name}} Price - TWW">
     <meta propery="og:url" content="https://www.twwyachts.com/yachts-for-sale/soaring-262466/">
 </head>
 
@@ -4975,9 +4975,8 @@
                                             data-widget_type="image.default">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-image">
-                                                    <img src="https://cloud.yatco.com/ForSale/Vessel/Photo/290622/large_2976902.jpg"
-                                                        title="{{boat_name}} for sale" alt="{{boat_name}} for sale"
-                                                        srcset="https://cloud.yatco.com/ForSale/Vessel/Photo/290622/large_2976902.jpg">
+                                                    <img src="{{BASE_URI}}/boat_info/{{boatInfoData?.cover_image}}"
+                                                        title="{{boatInfoData?.boat_info.name}} for sale" alt="{{boatInfoData?.boat_info.name}} for sale">
                                                 </div>
                                             </div>
                                         </div>
@@ -5008,7 +5007,7 @@
                                                         <span class="uael-before-heading"><span
                                                                 class="elementor-inline-editing uael-dual-heading-text uael-first-text"
                                                                 data-elementor-setting-key="before_heading_text"
-                                                                data-elementor-inline-editing-toolbar="basic"><span>{{boat_name}}</span></span></span><span
+                                                                data-elementor-inline-editing-toolbar="basic"><span>{{boatInfoData?.boat_info.name}}</span></span></span><span
                                                             class="uael-adv-heading-stack"><span
                                                                 class="elementor-inline-editing uael-dual-heading-text uael-highlight-text"
                                                                 data-elementor-setting-key="second_heading_text"
@@ -5031,9 +5030,7 @@
                                                                     data-id="483a34a" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            68.2m (223' 10")</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">{{boatInfoData?.boat_info.width}}m</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5047,9 +5044,7 @@
                                                                     data-id="0b2bdc3" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            I</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">I</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5063,9 +5058,7 @@
                                                                     data-id="2cd93a9" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            2022</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">{{boatInfoData?.boat_info.mfg_year}}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5079,9 +5072,7 @@
                                                                     data-id="f7f7c08" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            I</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">I</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5095,9 +5086,7 @@
                                                                     data-id="bf7e8cd" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            ABEKING &amp; RASMUSSEN</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">{{boatInfoData?.boat_info.manufacturer}}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5354,18 +5343,14 @@
                                                                     data-id="c888c7f" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            12</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">{{boatInfoData?.boat_info.guest_capacity}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="elementor-element elementor-element-84ff564 elementor-widget elementor-widget-heading"
                                                                     data-id="84ff564" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <h4
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            GUESTS</h4>
+                                                                        <h4 class="elementor-heading-title elementor-size-default">GUESTS</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5379,18 +5364,14 @@
                                                                     data-id="e3f424f" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            N/A</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">{{boatInfoData?.boat_info.crew_capacity}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="elementor-element elementor-element-f06a591 elementor-widget elementor-widget-heading"
                                                                     data-id="f06a591" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <h4
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            CREW</h4>
+                                                                        <h4 class="elementor-heading-title elementor-size-default">CREW</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5412,18 +5393,14 @@
                                                                     data-id="469c170" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            MTU</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">{{boatInfoData?.boat_info.engine_type}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="elementor-element elementor-element-aaada15 elementor-widget elementor-widget-heading"
                                                                     data-id="aaada15" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <h4
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            ENGINE</h4>
+                                                                        <h4 class="elementor-heading-title elementor-size-default">ENGINE</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5437,18 +5414,14 @@
                                                                     data-id="b12a924" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            14 Knots</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">{{boatInfoData?.boat_info.top_speed}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="elementor-element elementor-element-7fc8d75 elementor-widget elementor-widget-heading"
                                                                     data-id="7fc8d75" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <h4
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            SPEED</h4>
+                                                                        <h4 class="elementor-heading-title elementor-size-default">SPEED</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5470,18 +5443,14 @@
                                                                     data-id="a6d7481" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            Focus Yacht Design</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">{{boatInfoData?.boat_info.interior}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="elementor-element elementor-element-046729a elementor-widget elementor-widget-heading"
                                                                     data-id="046729a" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <h4
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            INTERIOR</h4>
+                                                                        <h4 class="elementor-heading-title elementor-size-default">INTERIOR</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5495,18 +5464,14 @@
                                                                     data-id="804d613" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <p
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            Focus Yacht Design</p>
+                                                                        <p class="elementor-heading-title elementor-size-default">{{boatInfoData?.boat_info.exterior}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="elementor-element elementor-element-f18a46d elementor-widget elementor-widget-heading"
                                                                     data-id="f18a46d" data-element_type="widget"
                                                                     data-widget_type="heading.default">
                                                                     <div class="elementor-widget-container">
-                                                                        <h4
-                                                                            class="elementor-heading-title elementor-size-default">
-                                                                            EXTERIOR</h4>
+                                                                        <h4 class="elementor-heading-title elementor-size-default">EXTERIOR</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -5541,15 +5506,14 @@
                                                 <div
                                                     class="uael-module-content uael-dual-color-heading uael-heading-stack-none">
                                                     <h3>
-                                                        <span class="uael-before-heading"><span
+                                                        <span class="uael-before-heading">
+                                                            <span
                                                                 class="elementor-inline-editing uael-dual-heading-text uael-first-text"
                                                                 data-elementor-setting-key="before_heading_text"
-                                                                data-elementor-inline-editing-toolbar="basic"><span>SOARING</span></span></span><span
-                                                            class="uael-adv-heading-stack"><span
-                                                                class="elementor-inline-editing uael-dual-heading-text uael-highlight-text"
-                                                                data-elementor-setting-key="second_heading_text"
-                                                                data-elementor-inline-editing-toolbar="basic"> Yacht
-                                                                Price</span></span>
+                                                                data-elementor-inline-editing-toolbar="basic">
+                                                                <span>{{boatInfoData?.boat_info.name}} PRICE</span>
+                                                            </span>
+                                                        </span>
                                                     </h3>
                                                 </div>
                                             </div>
@@ -5558,8 +5522,10 @@
                                             data-id="0108282" data-element_type="widget"
                                             data-widget_type="heading.default">
                                             <div class="elementor-widget-container">
-                                                <p class="elementor-heading-title elementor-size-default">Price on
-                                                    Application</p>
+                                                <p class="elementor-heading-title elementor-size-default" *ngIf="boatInfoData?.boat_info.price !== null || boatInfoData?.boat_info.price !== undefined || boatInfoData?.boat_info.price !== 0; else no_price">{{boatInfoData?.boat_info.price | currency:'USD':'symbol'}} Hi</p>
+                                                <ng-template #no_price>
+                                                    <p class="elementor-heading-title elementor-size-default">Price On Application</p>
+                                                </ng-template>
                                             </div>
                                         </div>
                                         <div class="elementor-element elementor-element-377a584 elementor-widget elementor-widget-heading"
@@ -5586,7 +5552,7 @@
                                                         <span class="uael-before-heading"><span
                                                                 class="elementor-inline-editing uael-dual-heading-text uael-first-text"
                                                                 data-elementor-setting-key="before_heading_text"
-                                                                data-elementor-inline-editing-toolbar="basic"><span>{{boat_name}}</span></span></span><span
+                                                                data-elementor-inline-editing-toolbar="basic"><span>{{boatInfoData?.boat_info.name}}</span></span></span><span
                                                             class="uael-adv-heading-stack"><span
                                                                 class="elementor-inline-editing uael-dual-heading-text uael-highlight-text"
                                                                 data-elementor-setting-key="second_heading_text"
@@ -5610,12 +5576,11 @@
                                             data-widget_type="button.default">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-button-wrapper">
-                                                    <a href="#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjE3MTAwIiwidG9nZ2xlIjpmYWxzZX0%3D"
+                                                    <a
                                                         class="elementor-button-link elementor-button elementor-size-sm"
                                                         role="button">
                                                         <span class="elementor-button-content-wrapper">
-                                                            <span class="elementor-button-text">BOOK a virtual
-                                                                tour</span>
+                                                            <span class="elementor-button-text">BOOK A VISIT</span>
                                                         </span>
                                                     </a>
                                                 </div>
