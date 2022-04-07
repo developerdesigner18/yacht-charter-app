@@ -19,7 +19,7 @@ export class HomeService {
 
   getHomeData(
   ): Observable<any> {
-    return this.httpClient.get(`${this.BASE_URI}/api/home/getHomeData`).pipe(
+    return this.httpClient.get(`${this.BASE_URI}/api/pages/getHomeData`).pipe(
       catchError(this.handleError)
     )
   }
