@@ -4975,7 +4975,7 @@
                                             data-widget_type="image.default">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-image">
-                                                    <img src="{{BASE_URI}}/boat_info/{{boatInfoData?.cover_image}}"
+                                                    <img src="{{BASE_URI}}{{boatInfoData?.cover_image}}"
                                                         title="{{boatInfoData?.boat_info.name}} for sale" alt="{{boatInfoData?.boat_info.name}} for sale">
                                                 </div>
                                             </div>
@@ -5227,7 +5227,7 @@
                                                         const yacht_data = JSON.parse(json);
 
                                                         // set page title
-                                                        let description = yacht_data.vessel_name + ' Yacht for Sale - ' + yacht_data.vessel_name + ' Yacht Price - TWW';
+                                                        let description = yacht_data.vessel_name + ' Yacht for Sale - ' + yacht_data.vessel_name + ' Yacht Price';
                                                         document.title = description;
                                                         let page_description = yacht_data.vessel_name + ' Yacht for Sale is a ' + yacht_data.builder + ' delivered in ' + yacht_data.year_built + ', asking price of ' + yacht_data.asking_price;
                                                         $('head').append('<meta name="description" content="' +
@@ -5522,7 +5522,7 @@
                                             data-id="0108282" data-element_type="widget"
                                             data-widget_type="heading.default">
                                             <div class="elementor-widget-container">
-                                                <p class="elementor-heading-title elementor-size-default" *ngIf="boatInfoData?.boat_info.price !== null || boatInfoData?.boat_info.price !== undefined || boatInfoData?.boat_info.price !== 0; else no_price">{{boatInfoData?.boat_info.price | currency:'USD':'symbol'}} Hi</p>
+                                                <p class="elementor-heading-title elementor-size-default" *ngIf="boatInfoData?.boat_info.price !== undefined && boatInfoData?.boat_info.price !== null && boatInfoData?.boat_info.price !== 0; else no_price">{{boatInfoData?.boat_info.price | currency:"kr ":"symbol"}}</p>
                                                 <ng-template #no_price>
                                                     <p class="elementor-heading-title elementor-size-default">Price On Application</p>
                                                 </ng-template>
@@ -5556,8 +5556,7 @@
                                                             class="uael-adv-heading-stack"><span
                                                                 class="elementor-inline-editing uael-dual-heading-text uael-highlight-text"
                                                                 data-elementor-setting-key="second_heading_text"
-                                                                data-elementor-inline-editing-toolbar="basic"> for
-                                                                Sale</span></span>
+                                                                data-elementor-inline-editing-toolbar="basic"> for Sale</span></span>
                                                     </h2>
                                                 </div>
                                             </div>
@@ -5571,7 +5570,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="elementor-element elementor-element-13858b9 elementor-align-left elementor-widget elementor-widget-button"
+                                        <!-- <div class="elementor-element elementor-element-13858b9 elementor-align-left elementor-widget elementor-widget-button"
                                             data-id="13858b9" data-element_type="widget"
                                             data-widget_type="button.default">
                                             <div class="elementor-widget-container">
@@ -5585,7 +5584,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -5608,9 +5607,27 @@
                                             data-widget_type="gallery.default">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-gallery__container e-gallery-container e-gallery-masonry e-gallery--ltr e-gallery--lazyload"
-                                                    style="--hgap:10px; --vgap:10px; --animation-duration:350ms; --columns:4; --highest-column-gap-count:5; padding-bottom: 300px;">
+                                                    style="--hgap:10px; --vgap:10px; --animation-duration:350ms; --columns:4; --highest-column-gap-count:5; padding-bottom: 178.968%;">
 
-                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
+                                                    <ng-container  *ngFor="let boat of boatImagesDivided; let i = index">
+                                                        <ng-container *ngFor="let boatImg of boatImagesDivided[i]; let j = index">
+                                                            <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
+                                                                style="--item-height:66.6667%; --column:{{j}}; --items-in-column:{{i}}; --percent-height:{{i*9.09091}}%;">
+                                                                <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
+                                                                    data-width="300" data-height="200" alt=""
+                                                                    style="background-image: url({{BASE_URI}}{{boatImg.name}});" (click)="showLightbox(boatImg)">
+                                                                </div>
+                                                            </div>
+                                                        </ng-container>
+                                                    </ng-container>
+                                                    <ng-image-fullscreen-view
+                                                        [images]="lightboxObject"
+                                                        [imageIndex]="currentIndex"
+                                                        [show]="showFlag"
+                                                        (close)="closeEventHandler()">
+                                                    </ng-image-fullscreen-view>
+
+                                                    <!-- <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
                                                         style="--item-height:66.6667%; --column:0; --items-in-column:0; --percent-height:0%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
                                                             data-thumbnail="https://www.twwyachts.com/wp-content/uploads/2020/02/Silver-Wind-MS-0941-edit-300x200.jpg"
@@ -5618,9 +5635,6 @@
                                                             style="background-image: url(&quot;/assets/images/boat-info-1.png&quot;);">
                                                         </div>
                                                     </div>
-                                                    <div class="e-gallery-image elementor-gallery-item__image elementor-animated-content"
-                                                        data-thumbnail="https://www.twwyachts.com/wp-content/uploads/2020/02/Silver-Wind-MS-0941-edit-300x200.jpg"
-                                                        data-width="300" data-height="200" alt=""></div>
                                                     <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
                                                         style="--item-height:66.6667%; --column:1; --items-in-column:0; --percent-height:0%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
@@ -5629,9 +5643,6 @@
                                                             style="background-image: url(&quot;/assets/images/boat-info-2.png&quot;);">
                                                         </div>
                                                     </div>
-                                                    <div class="e-gallery-image elementor-gallery-item__image elementor-animated-content"
-                                                        data-thumbnail="https://www.twwyachts.com/wp-content/uploads/2020/02/Silver-Wind-MS-0941-edit-300x200.jpg"
-                                                        data-width="300" data-height="200" alt=""></div>
                                                     <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
                                                         style="--item-height:66.6667%; --column:2; --items-in-column:0; --percent-height:0%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
@@ -5640,9 +5651,6 @@
                                                             style="background-image: url(&quot;/assets/images/boat-info-3.png&quot;);">
                                                         </div>
                                                     </div>
-                                                    <div class="e-gallery-image elementor-gallery-item__image elementor-animated-content"
-                                                        data-thumbnail="https://www.twwyachts.com/wp-content/uploads/2020/02/Silver-Wind-MS-0941-edit-300x200.jpg"
-                                                        data-width="300" data-height="200" alt=""></div>
                                                     <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
                                                         style="--item-height:66.6667%; --column:3; --items-in-column:0; --percent-height:0%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
@@ -5650,10 +5658,7 @@
                                                             data-width="300" data-height="200" alt=""
                                                             style="background-image: url(&quot;/assets/images/boat-info-4.png&quot;);">
                                                         </div>
-                                                    </div>
-                                                    <div class="e-gallery-image elementor-gallery-item__image elementor-animated-content"
-                                                        data-thumbnail="https://www.twwyachts.com/wp-content/uploads/2020/02/Silver-Wind-MS-0941-edit-300x200.jpg"
-                                                        data-width="300" data-height="200" alt=""></div>
+                                                    </div> -->
                                                     <!-- <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
                                                         style="--item-height:66.6667%; --column:0; --items-in-column:1; --percent-height:16.6667%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"

@@ -3,8 +3,9 @@
     margin-bottom: 0px;
 }
 
-.elementor-bc-flex-widget .elementor-4876 .elementor-element.elementor-element-736bc5e.elementor-column .elementor-column-wrap {
-    align-items: flex-end;
+::ng-deep .ng-image-fullscreen-view .lightbox-wrapper .close:hover{
+    opacity: 0.8;
+    transition: 0.5s;
 }
 
 .elementor-4876 .elementor-element.elementor-element-736bc5e.elementor-column.elementor-element[data-element_type="column"] > .elementor-column-wrap.elementor-element-populated > .elementor-widget-wrap {

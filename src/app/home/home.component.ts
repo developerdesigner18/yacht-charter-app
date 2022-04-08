@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     this.homeService.getHomeData().subscribe(
       res => {
         this.homeData = res.data
-        console.log('###', this.homeData);
+        console.log('###home', this.homeData);
         
         if (!res.success) { Notiflix.Notify.failure(res.error); }
       },

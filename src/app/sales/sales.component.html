@@ -3221,7 +3221,7 @@
                                                                 <div class="item_border">
                                                                     <a [routerLink]="['/boat-info']" [queryParams]="{'bid': j._id}"> </a>
                                                                     <img class="yacht_image"
-                                                                        src="{{BASE_URI}}/boat-info/{{j.cover_image}}">
+                                                                        src="{{BASE_URI}}{{j.cover_image}}">
                                                                     <div class="yacht_description">
                                                                         <h3>{{j.boat_info.name}}</h3>
                                                                         <p> {{j.boat_info.width}}m | {{j.boat_info.manufacturer}} | {{j.boat_info.mfg_year}} </p>

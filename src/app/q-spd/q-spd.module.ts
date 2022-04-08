@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { QSpdRoutingModule } from './q-spd-routing.module';
 import { QSpdComponent } from './q-spd.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
   imports: [
     CommonModule,
     QSpdRoutingModule,
-    NgImageSliderModule
+    NgImageSliderModule,
+    NgImageFullscreenViewModule
   ]
 })
 export class QSpdModule { }

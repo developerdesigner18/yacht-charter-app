@@ -30,6 +30,9 @@ export class SalesComponent implements OnInit {
             this.boatInfoDivided.push(chunk)
         }
 
+        console.log('####sales', this.boatInfoAll);
+        console.log('####sales-divided', this.boatInfoDivided);
+
         if (!res.success) { Notiflix.Notify.failure(res.error); }
       },
       err => {        

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BoatInfoRoutingModule } from './boat-info-routing.module';
 import { BoatInfoComponent } from './boat-info.component';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { BoatInfoComponent } from './boat-info.component';
   ],
   imports: [
     CommonModule,
-    BoatInfoRoutingModule
-  ]
+    BoatInfoRoutingModule,
+    NgImageFullscreenViewModule
+  ],
 })
 export class BoatInfoModule { }

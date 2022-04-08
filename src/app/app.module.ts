@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,10 @@ import { NgImageSliderModule } from 'ng-image-slider';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgImageSliderModule
+    NgImageSliderModule,
+    NgImageFullscreenViewModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
