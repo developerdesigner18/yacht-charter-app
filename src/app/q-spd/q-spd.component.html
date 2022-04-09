@@ -5646,55 +5646,63 @@
                                                             style="background-image: url({{qspd.name}});">
                                                         </div>
                                                     </div> -->
-                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
+                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content" (click)="showLightbox('https://www.q-spd.com/wp-content/uploads/IMG_2308-2-1024x768.jpg')"
                                                         style="--item-height:66.6667%; --column:0; --items-in-column:0; --percent-height:0%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
                                                             data-width="300" data-height="200" alt=""
                                                             style="background-image: url('https://www.q-spd.com/wp-content/uploads/IMG_2308-2-1024x768.jpg');">
                                                         </div>
                                                     </div>
-                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
+                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content" (click)="showLightbox('https://www.q-spd.com/wp-content/uploads/QSD1-stb1-clr-1024x683.png')"
                                                         style="--item-height:66.6667%; --column:1; --items-in-column:0; --percent-height:0%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
                                                             data-width="300" data-height="200" alt=""
                                                             style="background-image: url('https://www.q-spd.com/wp-content/uploads/QSD1-stb1-clr-1024x683.png');">
                                                         </div>
                                                     </div>
-                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
+                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content" (click)="showLightbox('https://www.q-spd.com/wp-content/uploads/QSD1-thurst1-1024x683.jpg')"
                                                         style="--item-height:66.6667%; --column:2; --items-in-column:0; --percent-height:0%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
                                                             data-width="300" data-height="200" alt=""
                                                             style="background-image: url('https://www.q-spd.com/wp-content/uploads/QSD1-thurst1-1024x683.jpg');">
                                                         </div>
                                                     </div>
-                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
+                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content" (click)="showLightbox('https://www.q-spd.com/wp-content/uploads/IMG_2293-1024x1024.jpg')"
                                                         style="--item-height:66.6667%; --column:3; --items-in-column:0; --percent-height:0%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
                                                             data-width="300" data-height="200" alt=""
                                                             style="background-image: url('https://www.q-spd.com/wp-content/uploads/IMG_2293-1024x1024.jpg');">
                                                         </div>
                                                     </div>
-                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
+                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content" (click)="showLightbox('https://www.diesel-international.com/wp-content/uploads/2019/02/QSD1-e1551003206487.jpg')"
                                                         style="--item-height:66.6667%; --column:0; --items-in-column:1; --percent-height:9.09091%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
                                                             data-width="300" data-height="200" alt=""
                                                             style="background-image: url('https://www.diesel-international.com/wp-content/uploads/2019/02/QSD1-e1551003206487.jpg');">
                                                         </div>
                                                     </div>
-                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
+                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content" (click)="showLightbox('https://www.q-spd.com/wp-content/uploads/Royal-Denship-821.jpg')"
                                                         style="--item-height:66.6667%; --column:1; --items-in-column:1; --percent-height:9.09091%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
                                                             data-width="300" data-height="200" alt=""
                                                             style="background-image: url('https://www.q-spd.com/wp-content/uploads/Royal-Denship-821.jpg');">
                                                         </div>
                                                     </div>
-                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content"
+                                                    <div class="e-gallery-item elementor-gallery-item elementor-animated-content" (click)="showLightbox('https://www.q-spd.com/wp-content/uploads/Q-SPD-MY400-Drive-system-on-Royal-Deanship-821-1024x588.jpg')"
                                                         style="--item-height:66.6667%; --column:2; --items-in-column:1; --percent-height:9.09091%;">
                                                         <div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
                                                             data-width="300" data-height="200" alt=""
                                                             style="background-image: url('https://www.q-spd.com/wp-content/uploads/Q-SPD-MY400-Drive-system-on-Royal-Deanship-821-1024x588.jpg');">
                                                         </div>
                                                     </div>
+
+                                                    <ng-image-fullscreen-view
+                                                        [images]="imageObject"
+                                                        [imageIndex]="currentIndex"
+                                                        [show]="showFlag"
+                                                        (close)="closeEventHandler()">
+                                                    </ng-image-fullscreen-view>
+
 
                                                 </div>
                                             </div>

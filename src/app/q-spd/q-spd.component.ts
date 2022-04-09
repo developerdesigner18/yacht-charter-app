@@ -80,9 +80,9 @@ export class QSpdComponent implements OnInit {
     ];
   }
 
-  showLightbox(img: any) {
-    this.lightboxObject.map((item: any, index: any) => {
-      if (img._id == item._id) {
+  showLightbox(url: any) {
+    this.imageObject.map((item: any, index: any) => {      
+      if (url == item.image) {
         this.currentIndex = index;
       }
     })

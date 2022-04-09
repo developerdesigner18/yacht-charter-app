@@ -24,6 +24,13 @@ export class SalesService {
       )
     }
 
+  getBoatInfoAllByType(btype: any
+    ): Observable<any> {
+      return this.httpClient.get(`${this.BASE_URI}/api/boat/getBoatInfoAllByType`, { params: { btype: btype } }).pipe(
+        catchError(this.handleError)
+      )
+    }
+
     private handleError(error: HttpErrorResponse) {
       let msg = '';    
       
