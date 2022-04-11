@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       res => {
         if (res.success) {
           Notiflix.Loading.remove();
-          Notiflix.Notify.success('User successfully Logged In.');
+          Notiflix.Notify.success(res.message);
           
           localStorage.setItem('u_info', this.cryptoService.encrypt(JSON.stringify(res.data)));
           localStorage.setItem('auth_token', res.token);
