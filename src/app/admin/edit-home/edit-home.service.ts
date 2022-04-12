@@ -11,18 +11,12 @@ import { environment } from '../../../environments/environment';
 })
 export class EditHomeService {
   private BASE_URI: string;
-  private U_TOKEN: any;
-  headers: any;
 
   constructor(
     private httpClient: HttpClient,
     // public jwtHelper: JwtHelperService
   ) {
-    this.BASE_URI = environment.apiUrl
-    this.U_TOKEN = localStorage.getItem('auth_token')
-    this.headers.set('Content-Type', 'undefined');
-    this.headers.set('Authorization', this.U_TOKEN);
-    
+    this.BASE_URI = environment.apiUrl    
   }
 
   // isAuthenticated(): boolean {
@@ -32,13 +26,29 @@ export class EditHomeService {
   //   return !this.jwtHelper.isTokenExpired(token);
   // }
 
-  insertHomeData(pid: any, payload: {
+  updateHomeData(page_id: any, payload: {
   }): Observable<any> {
-    console.log(pid, payload, this.headers, this.BASE_URI, this.U_TOKEN);
-    
-    return this.httpClient.post(`${this.BASE_URI}/api/home/insertHomeData`, payload, { params: { pid: pid }, headers: this.headers }).pipe(
+    let header = this.initHeaders();
+    return this.httpClient.post(`${this.BASE_URI}/api/pages/updateHomeData`, payload, { params: { pid: page_id }, headers: header, observe: 'response' as 'body'}).pipe(
       catchError(this.handleError)
     )
+  }
+
+  private initHeaders() {
+    let token: any = localStorage.getItem('auth_token');    
+    var headers = new HttpHeaders();
+
+    if (token !== null) {
+      headers = headers.append('Authorization', token);
+    }
+
+    headers = headers
+    .append('Access-Control-Allow-Origin', '*')
+    .append('Content-Type', 'undefined')
+    .append('Pragma', 'no-cache')
+    .append('charset', 'utf-8')
+    
+    return headers;
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
         if (!res.success) { Notiflix.Notify.failure(res.error); }
       },
       err => {        
-        Notiflix.Notify.failure(err.error.message);
+        Notiflix.Notify.failure(err.error?.message);
       }
     );
   }
