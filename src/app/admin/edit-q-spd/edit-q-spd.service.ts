@@ -8,19 +8,19 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class EditBoatInfoService {
+export class EditQSpdService {
   private BASE_URI: string;
 
   constructor(
     private httpClient: HttpClient,
   ) {
-    this.BASE_URI = environment.apiUrl    
+    this.BASE_URI = environment.apiUrl
   }
 
-  updateBoatInfo(boat_id: any, payload: {
+  updateQSpdData(page_id: any, payload: {
   }): Observable<any> {
     let header = this.initHeaders();
-    return this.httpClient.post(`${this.BASE_URI}/api/boat/updateBoatInfo`, payload, { params: { bid: boat_id }, headers: header, observe: 'response' as 'body'}).pipe(
+    return this.httpClient.post(`${this.BASE_URI}/api/pages/updateQSpdData`, payload, { params: { pid: page_id }, headers: header, observe: 'response' as 'body'}).pipe(
       catchError(this.handleError)
     )
   }
@@ -53,4 +53,5 @@ export class EditBoatInfoService {
     }
     return throwError(msg);
   }
+
 }

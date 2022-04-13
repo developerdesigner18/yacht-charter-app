@@ -5,6 +5,7 @@ import { AdminComponent } from './admin.component';
 import { LoginComponent } from './login/login.component';
 import { EditBoatInfoComponent } from './edit-boat-info/edit-boat-info.component';
 import { EditHomeComponent } from './edit-home/edit-home.component';
+import { EditQSpdComponent } from './edit-q-spd/edit-q-spd.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
@@ -15,6 +16,8 @@ const routes: Routes = [
   { path: 'edit-home', component: EditHomeComponent },
   // { path: 'edit-boat-info', loadChildren: () => import('./edit-boat-info/edit-boat-info.module').then(m => m.EditBoatInfoModule) },
   { path: 'edit-boat-info', component: EditBoatInfoComponent },
+  // { path: 'admin/edit-q-spd', loadChildren: () => import('./edit-q-spd/edit-q-spd.module').then(m => m.EditQSpdModule) },
+  { path: 'edit-q-spd', component: EditQSpdComponent },
 ];
 
 @NgModule({

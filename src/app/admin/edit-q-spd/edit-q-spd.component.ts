@@ -1,34 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SalesService } from '../../sales/sales.service';
-import { EditBoatInfoService } from './edit-boat-info.service';
+import { QSpdService } from '../../q-spd/q-spd.service';
+import { EditQSpdService } from './edit-q-spd.service';
 import * as Notiflix from 'notiflix';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-edit-boat-info',
-  templateUrl: './edit-boat-info.component.html',
-  styleUrls: ['./edit-boat-info.component.scss']
+  selector: 'app-edit-q-spd',
+  templateUrl: './edit-q-spd.component.html',
+  styleUrls: ['./edit-q-spd.component.scss']
 })
-export class EditBoatInfoComponent implements OnInit {
+export class EditQSpdComponent implements OnInit {
   BASE_URI: string;
-  boatInfoData: any;
-  boat_id: any;
-  editBoatInfoForm: FormGroup;
+  qSpdData: any;
+  page_id: any;
+  editQSpdForm: FormGroup;
   url: any;
   format: any;
 
   constructor(
-    private salesService: SalesService,
+    private qSpdService: QSpdService,
     public formbuilder: FormBuilder,
-    private editBoatInfoService: EditBoatInfoService
+    private editQSpdService: EditQSpdService
   ) {
     this.BASE_URI = environment.apiUrl;
   }
 
   ngOnInit(): void {
-    console.log('EditBoatInfoComponent ngOnInit()');
-    this.editBoatInfoForm = this.formbuilder.group({
+    console.log('EditHomeComponent ngOnInit()');
+    this.editQSpdForm = this.formbuilder.group({
       tag_line: ["", Validators.required],
       heading_1: ["", Validators.required],
       description_1: ["", Validators.required],
@@ -41,12 +41,12 @@ export class EditBoatInfoComponent implements OnInit {
       image_1: ["", Validators.required],
     });
 
-    this.salesService.getBoatInfoAll().subscribe(
+    this.qSpdService.getQSpdData().subscribe(
       res => {
-        // this.boat_id = res.data._id
-        this.boatInfoData = res.data
-        this.editBoatInfoForm.patchValue(res.data.content)        
-        console.log('###edit-boat-info', this.boatInfoData);
+        this.page_id = res.data._id
+        this.qSpdData = res.data
+        this.editQSpdForm.patchValue(res.data.content)        
+        console.log('###edit-home', this.qSpdData);
         if (!res.success) { Notiflix.Notify.failure(res.error); }
       },
       err => {        
@@ -56,7 +56,7 @@ export class EditBoatInfoComponent implements OnInit {
   }
 
   getControlValidation(key: string): boolean {
-    const { invalid, touched, dirty } = this.editBoatInfoForm.get(key) as FormGroup;
+    const { invalid, touched, dirty } = this.editQSpdForm.get(key) as FormGroup;
     // console.log(key);
     return invalid && (touched || dirty);
   }
@@ -81,17 +81,17 @@ export class EditBoatInfoComponent implements OnInit {
         this.url = (<FileReader>event.target).result;
       }
     }
-    console.log(this.editBoatInfoForm.value);
+    console.log(this.editQSpdForm.value);
     
     Notiflix.Loading.remove();
   }
 
   submitData() {
-    if (this.editBoatInfoForm.invalid) {
+    if (this.editQSpdForm.invalid) {
       return;
     }
 
-    const { value } = this.editBoatInfoForm;
+    const { value } = this.editQSpdForm;
 
     console.log(value);
     
@@ -101,7 +101,7 @@ export class EditBoatInfoComponent implements OnInit {
     },
     )
 
-    this.editBoatInfoService.updateBoatInfo(this.boat_id, value).subscribe(
+    this.editQSpdService.updateQSpdData(this.page_id, value).subscribe(
       res => {
         Notiflix.Loading.remove();
         Notiflix.Notify.success(res.message);

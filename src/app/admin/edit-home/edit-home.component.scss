@@ -1,11 +1,3 @@
-::ng-deep .elementor-17202 .elementor-element.elementor-element-5af1574 {
-    display: none;
-}
-
-::ng-deep app-footer {
-    display: none;
-}
-
 .admin-buttons {
     margin-top: 15%;
 }
@@ -22,7 +14,7 @@
       width: 100%;
     //   height: 560px;
     //   right: 136px;
-      margin-top: 10%;
+      margin: 11% 0% 1%;
       bottom: 90px;
       background: #ffffff;
       border: 1px solid #d8d8d8;
@@ -153,7 +145,7 @@
         button {
           width: 175px;
           height: 45px;
-          background: linear-gradient(90deg, #1e3252 -30%, #1500c3 130%);
+          background: linear-gradient(130deg, #1e3252 0%, #1e3252ab 100%);
           border-radius: 5px;
           font-family: Montserrat;
           font-style: normal;
@@ -4764,7 +4756,7 @@ body {
 }
 
 .formFooter-button,.submit-button {
-    background: linear-gradient(90deg, #1e3252 -30%, #1500c3 130%);
+    background: linear-gradient(130deg, #1e3252 0%, #1e3252ab 100%);
     // border-color: #18bd5b;
     color: #fff
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QSpdService } from './q-spd.service';
 import * as Notiflix from 'notiflix';
 import { environment } from '../../environments/environment';
 
@@ -9,17 +10,31 @@ import { environment } from '../../environments/environment';
 })
 export class QSpdComponent implements OnInit {
   BASE_URI: string;
+  qSpdData: any;
   imageObject: Array<object>;
   qSpdInfo: any[];
   showFlag: boolean = false;
   currentIndex: any = -1;
   lightboxObject: any;
   
-  constructor() {
+  constructor(
+    private qSpdService: QSpdService,
+  ) {
     this.BASE_URI = environment.apiUrl;
   }
 
   ngOnInit(): void {
+    this.qSpdService.getQSpdData().subscribe(
+      res => {
+        this.qSpdData = res.data
+        console.log('###q-spd', this.qSpdData);
+        
+        if (!res.success) { Notiflix.Notify.failure(res.error); }
+      },
+      err => {        
+        Notiflix.Notify.failure(err.error?.message);
+      }
+    );
     
     this.qSpdInfo = [
       {
@@ -45,7 +60,7 @@ export class QSpdComponent implements OnInit {
       },
     ]
 
-    console.log('####qspd', this.qSpdInfo);
+    console.log('####q-spd images', this.qSpdInfo);
     
     this.imageObject = [
       {

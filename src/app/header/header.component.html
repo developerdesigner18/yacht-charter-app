@@ -17,8 +17,7 @@
                   <div class="elementor-widget-container">
                     <div class="elementor-image">
                       <a [routerLink]="['/']">
-                        <img width="262" height="68"
-                          src="/assets/icons/dummy-yacht-logo-transparent-white.png"
+                        <img src="/assets/icons/dummy-yacht-logo-transparent-white-resized.png"
                           class="attachment" alt="" loading="lazy"> </a>
                     </div>
                   </div>
@@ -28,7 +27,7 @@
           </div>
           <div
             class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-5af1574"
-            data-id="5af1574" data-element_type="column">
+            data-id="5af1574" data-element_type="column" *ngIf="show_menu">
             <div class="elementor-column-wrap elementor-element-populated">
               <div class="elementor-widget-wrap">
                 <div
