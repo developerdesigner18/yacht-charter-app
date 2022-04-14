@@ -26,8 +26,7 @@ export class EditHomeService {
   //   return !this.jwtHelper.isTokenExpired(token);
   // }
 
-  updateHomeData(page_id: any, payload: {
-  }): Observable<any> {
+  updateHomeData(page_id: any, payload: any): Observable<any> {
     let header = this.initHeaders();
     return this.httpClient.post(`${this.BASE_URI}/api/pages/updateHomeData`, payload, { params: { pid: page_id }, headers: header, observe: 'response' as 'body'}).pipe(
       catchError(this.handleError)
@@ -44,7 +43,8 @@ export class EditHomeService {
 
     headers = headers
     .append('Access-Control-Allow-Origin', '*')
-    .append('Content-Type', 'undefined')
+    // .append('Content-Type', 'undefined')
+    // .append("Accept", "application/json")
     .append('Pragma', 'no-cache')
     .append('charset', 'utf-8')
     
