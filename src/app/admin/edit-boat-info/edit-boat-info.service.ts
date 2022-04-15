@@ -17,10 +17,32 @@ export class EditBoatInfoService {
     this.BASE_URI = environment.apiUrl    
   }
 
+  getBoatInfoAll(
+  ): Observable<any> {
+    return this.httpClient.get(`${this.BASE_URI}/api/boat/getBoatInfoAll`).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  changeBoatStatus(boat_id: any, status: any): Observable<any> {
+    let header = this.initHeaders();
+    return this.httpClient.post(`${this.BASE_URI}/api/boat/changeBoatStatus`,{}, { params: { bid: boat_id, status: status }, headers: header, observe: 'response' as 'body'}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
   updateBoatInfo(boat_id: any, payload: {
   }): Observable<any> {
     let header = this.initHeaders();
     return this.httpClient.post(`${this.BASE_URI}/api/boat/updateBoatInfo`, payload, { params: { bid: boat_id }, headers: header, observe: 'response' as 'body'}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+    
+  deleteBoatInfo(boat_id: any): Observable<any> {
+    let header = this.initHeaders();
+    return this.httpClient.delete(`${this.BASE_URI}/api/boat/deleteBoatInfo`, { params: { bid: boat_id }, headers: header, observe: 'response' as 'body'}).pipe(
       catchError(this.handleError)
     )
   }

@@ -2778,6 +2778,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div style="padding-left: 10px;" *ngIf="filters">
+                                                <a class="elementor-button-link elementor-button elementor-size-sm" role="button" [routerLink]="['/sales']">
+                                                    <span class="elementor-button-content-wrapper">
+                                                        <span class="elementor-button-text">Reset Filters</span>
+                                                    </span>
+                                                </a>
+                                            </div>
                                         </section>
                                     </div>
                                 </div>
@@ -3211,7 +3218,7 @@
                                             data-widget_type="yacht_list.default">
                                             <div class="elementor-widget-container">
                                                 <div class="twwy-listing-widget container-fluid">
-                                                    <div class="vessell_list three_col">
+                                                    <div class="vessell_list three_col" *ngIf="boatInfoDivided.length != 0">
                                                         <div class="row gutter-zero" *ngFor="let i of boatInfoDivided">
                                                             <div class="col-md-4 vessell" *ngFor="let j of i">
                                                                 <div class="item_border">
@@ -3226,6 +3233,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <div class="vessell_list three_col" style="padding-bottom: 50px;" *ngIf="boatInfoDivided.length == 0">
+                                                        <span>
+                                                            No Boats Found
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>

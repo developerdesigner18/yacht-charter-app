@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,14 @@ import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
     HttpClientModule,
     AppRoutingModule,
     NgImageSliderModule,
-    NgImageFullscreenViewModule
+    NgImageFullscreenViewModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() { 
+        return localStorage.getItem('auth_token');
+        } 
+     }
+   })
   ],
   providers: [],
   bootstrap: [AppComponent],

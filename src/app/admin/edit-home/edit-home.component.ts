@@ -15,9 +15,9 @@ export class EditHomeComponent implements OnInit {
   homeData: any;
   page_id: any;
   editHomeForm: FormGroup;
+  format: any;
   image_1_url: any;
   landing_video_url: any;
-  format: any;
   video_file: any;
   image_file: any;
 
@@ -130,13 +130,13 @@ export class EditHomeComponent implements OnInit {
     this.editHomeService.updateHomeData(this.page_id, fd).subscribe(
       res => {
         Notiflix.Loading.remove();        
-        Notiflix.Notify.success(res.body?.message);
+        Notiflix.Notify.success(res.body.message);
         this.ngOnInit()
-        if (!res.body?.success) { Notiflix.Notify.failure(res.body?.error); }
+        if (!res.body.success) { Notiflix.Notify.failure(res.body.error); }
       },
       err => {
         Notiflix.Loading.remove();
-        Notiflix.Notify.failure(err.error?.message);
+        Notiflix.Notify.failure(err.error.message);
       }
     )
   }

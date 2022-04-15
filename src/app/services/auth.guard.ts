@@ -15,12 +15,31 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      var isAuthenticated = this.authService.getAuthStatus();      
-      if (!isAuthenticated) {
-          this.router.navigate(['/admin/login']);
+    var checkLogin = this.checkLogin()
+    if (checkLogin) {
+      var isTokenExpired = this.authService.checkTokenStatus();
+      if (!isTokenExpired) {
+        // expired
+        this.router.navigateByUrl('/admin/login');
+        return isTokenExpired;
+      } else {
+        // not expired
+        return isTokenExpired;
       }
-      return isAuthenticated;
-      // return true;
+    } else {
+      this.router.navigateByUrl('/')
+      return false;
+    }
+  }
+
+  checkLogin() {
+    if (this.authService.isLoggedIn()) {
+      // token found
+      return true;
+    } else {
+      // token not found
+      return false;
+    }
   }
   
 }

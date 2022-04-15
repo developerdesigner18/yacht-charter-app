@@ -57,7 +57,7 @@ export class BoatInfoComponent implements OnInit {
             console.log('*&*&*&', this.lightboxObject)
 
             
-            if (!res.success) { Notiflix.Notify.failure(res.error); }
+            if (!res.body.success) { Notiflix.Notify.failure(res.body.error); }
           },
           err => {        
             Notiflix.Notify.failure(err.error.message);

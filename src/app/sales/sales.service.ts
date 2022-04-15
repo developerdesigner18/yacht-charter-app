@@ -17,9 +17,9 @@ export class SalesService {
     this.BASE_URI = environment.apiUrl;
   }
 
-  getBoatInfoAll(
+  getActiveBoatInfoAll(
     ): Observable<any> {
-      return this.httpClient.get(`${this.BASE_URI}/api/boat/getBoatInfoAll`).pipe(
+      return this.httpClient.get(`${this.BASE_URI}/api/boat/getActiveBoatInfoAll`).pipe(
         catchError(this.handleError)
       )
     }

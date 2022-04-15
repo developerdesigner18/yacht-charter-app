@@ -22,4 +22,9 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  redirectHome() {    
+    if (this.show_menu === true) this.router.navigateByUrl('/')
+    if (this.show_menu === false) this.router.navigateByUrl('/admin/admin-dashboard')
+  }
+
 }

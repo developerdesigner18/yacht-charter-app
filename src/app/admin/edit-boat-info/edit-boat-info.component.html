@@ -23,13 +23,64 @@
                     </div>
                   </div>
             </form> -->
-            <form [formGroup]="editBoatInfoForm" (ngSubmit)="submitData()">
+            <section>
+                <div class="container-lg">
+                    <div class="table-responsive">
+                        <div class="table-wrapper">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-8 d-flex justify-content-start"><h2>Boat <b>Details</b></h2></div>
+                                    <div class="col-sm-4 d-flex justify-content-end" style="height: 38px;">
+                                        <button (click)="insertBoatInfo()" type="button" class="add-new" style="color: white;     padding: 0px 10px;
+                                        background: linear-gradient(130deg, #1e3252 0%, #1e3252ab 100%); border-radius: 5px;"><i class="fa fa-plus"></i> Add New</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Boat Name</th>
+                                        <th>Boat Type</th>
+                                        <th>Manufacturer</th>
+                                        <th>Mfg. Year</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let boats of boatInfoDataAll; let i = index">
+                                        <td>{{i+1}}</td>
+                                        <td>{{boats?.boat_info?.name}}</td>
+                                        <td>{{boats?.boat_type}}</td>
+                                        <td>{{boats?.boat_info?.manufacturer}}</td>
+                                        <td>{{boats?.boat_info?.mfg_year}}</td>
+                                        <td *ngIf="boats?.status == 'active'"> <span style="color: #fff; font-size: 12px; background-color: rgb(50, 198, 130); padding: 5px; border-radius: 5px;">{{boats?.status | uppercase}}</span> </td>
+                                        <td *ngIf="boats?.status == 'inactive'"> <span style="color: #fff; font-size: 12px; background-color: rgb(255, 85, 73); padding: 5px; border-radius: 5px;">{{boats?.status | uppercase}}</span></td>
+                                        <td>
+                                            <!-- <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a> -->
+                                            <!-- <a class="add" title="Add" data-toggle="tooltip" style="cursor: pointer;"><i class="fa fa-plus">&#xE03B;</i></a> -->
+                                            <a (click)="changeBoatStatus(boats?._id, boats?.status)" class="edit" title="Change Status" data-toggle="tooltip" style="cursor: pointer; padding: 0px 10px; color: #1e3252;"><i class="fa fa-eye"></i></a>
+                                            <a (click)="updateBoatInfo(boats?._id)" class="edit" title="Edit" data-toggle="tooltip" style="cursor: pointer; padding: 0px 10px; color: #1e3252;"><i class="fa fa-edit"></i></a>
+                                            <a (click)="deleteBoatInfo(boats?._id)" class="delete" title="Delete" data-toggle="tooltip" style="cursor: pointer; padding: 0px 10px; color:#1e3252;"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <form id="boat_form" [formGroup]="editBoatInfoForm" (ngSubmit)="submitData()" >
                 <ul class="form-section page-section">
                     <li id="cid_1" class="form-input-wide" data-type="control_head">
                         <div class="form-header-group header-large">
                             <div class="header-text httal htvam">
                                 <h1 id="header_1" class="form-header" data-component="header">
-                                    Edit Boat Information
+                                    Update Boat Information
                                 </h1>
                                 <div id="subHeader_1" class="form-subHeader">
                                     Please edit the information carefully by double-checking it with the current Boat Information.
@@ -38,7 +89,7 @@
                         </div>
                     </li>
                     <li class="form-line" data-type="control_fileupload" id="id_7">
-                        <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Upload Landing Video
+                        <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Upload Cover Photo
                         </label>
                         <div id="cid_7" class="form-input-wide" data-layout="full">
                             <div class="jfQuestion-fields" data-wrapper-react="true">
@@ -92,8 +143,8 @@
                                                 </div>
                                                 <div class="inputContainer" role="button" aria-label="Upload a File
                                                     Drag and drop files here" tabindex="0">
-                                                    <input class="fileupload-input" id="input_7" (change)="onUpload($event)" formControlName="landing_video"
-                                                        type="file" accept="video/mp4,video/avi" name="file" aria-labelledby="label_7" aria-hidden="true" tabindex="-1" />
+                                                    <input class="fileupload-input" id="input_7" (change)="onUpload($event)"
+                                                        type="file" accept="image/jpeg,image/jpg,image/png" name="file" aria-labelledby="label_7" aria-hidden="true" tabindex="-1" />
                                                 </div>
                                                 <label class="form-sub-label" for="uploadVideo"
                                                     id="label_uploadVideo"></label><span style="display:none"
@@ -117,19 +168,26 @@
                         <div style="display: flex; flex-direction: row;">
                             <div style="padding-top: 15px;">
                                 <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Current Preview </label>
-                                <video class="elementor-background-video-hosted elementor-html5-video" oncanplay="this.play()" onloadedmetadata="this.muted=true"
-                                loop="true" controls="true" playsinline style="width: 525px; padding-left: 10px;"
-                                src="{{BASE_URI}}{{boatInfoData?.media?.landing_video}}">
-                                    <p>Your browser does not support the HTML5 video tag. Here is
-                                        a <a href="{{BASE_URI}}{{boatInfoData?.media?.landing_video}}" target="_blank">link to the video</a> instead.</p>
-                                </video>
+                                <img width="525" style="padding-left: 10px;"
+                                src="{{BASE_URI}}{{boatInfoById?.cover_image}}"
+                                class="attachment-large size-large" alt="Boat Image" loading="lazy"
+                                sizes="100vw">
                             </div>
-                            <div style="padding-top: 15px;" *ngIf="format==='video' && url">
+                            <div style="padding-top: 15px;" *ngIf="image_1_url">
                                 <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> New Preview </label>
-                                <video class="elementor-background-video-hosted elementor-html5-video" oncanplay="this.play()" onloadedmetadata="this.muted=true"
-                                    loop="true" controls="true" playsinline style="width: 525px; padding-left: 10px;"
-                                    [src]="url">
-                                </video>
+                                <img width="525" style="padding-left: 10px;"
+                                class="attachment-large size-large" alt="Boat Image" loading="lazy" sizes="100vw"
+                                [src]="image_1_url">
+                                <div (click)="remove_photo()" style="
+                                vertical-align: top;
+                                display: inline-block;
+                                border-radius: 60px;
+                                box-shadow: 0 0 2px #888;
+                                padding: 8px 14px;
+                                margin-left: 15px;
+                                cursor: pointer;">
+                                    <i class="fa fa-close" *ngIf="image_1_url" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -226,7 +284,7 @@
                             <div class="jfQuestion-fields" data-wrapper-react="true">
                                 <div class="jfField isFilled">
                                     <div class="jfUpload-wrapper">
-                                        <div class="jfUpload-container">
+                                        <!-- <div class="jfUpload-container">
                                             <div class="jfUpload-text-container">
                                                 <div class="jfUpload-icon forDesktop">
                                                     <span class="iconSvg  dhtupload ">
@@ -257,7 +315,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="jfUpload-files-container validate[multipleUpload]">
                                             <div class="qq-uploader">
                                                 <div class="qq-upload-drop-area" style="display: none;">
@@ -274,7 +332,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="inputContainer" role="button" aria-label="Upload a File
-            Drag and drop files here" tabindex="0"><input class="fileupload-input" id="input_7"
+                                                        Drag and drop files here" tabindex="0"><input class="fileupload-input" id="input_7" (change)="onUpload($event)"
                                                         type="file" name="file" aria-labelledby="label_7" aria-hidden="true"
                                                         tabindex="-1"></div><label class="form-sub-label" for="uploadVideo"
                                                     id="label_uploadVideo"></label><span style="display:none"
@@ -299,14 +357,14 @@
                             <div style="padding-top: 15px;">
                                 <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Current Preview </label>
                                 <img width="525" style="padding-left: 10px;"
-                                src="{{BASE_URI}}{{boatInfoData?.media?.image_1}}"
+                                src="{{BASE_URI}}{{boatInfoDataAll?.media?.image_1}}"
                                 class="attachment-large size-large" alt="Boat Image" loading="lazy"
                                 sizes="100vw">
                             </div>
                             <div style="padding-top: 15px;">
                                 <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> New Preview </label>
                                 <img width="525" style="padding-left: 10px;"
-                                src="{{BASE_URI}}{{boatInfoData?.media?.image_1}}"
+                                src="{{BASE_URI}}{{boatInfoDataAll?.media?.image_1}}"
                                 class="attachment-large size-large" alt="Boat Image" loading="lazy"
                                 sizes="100vw">
                             </div>

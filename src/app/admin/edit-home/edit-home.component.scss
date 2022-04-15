@@ -272,40 +272,40 @@
   
   }
   
-  @media only screen and (min-width: 1700px) {
-    .layout {
-      .login_box {
-        width: 45vh;
-        height: 70vh;
-        right: 0;
-        /* top: 16vh; */
-        bottom: 80px;
-        .email_row {
-          width: 100%;
-          .user_text{
-            max-width:82%;
-          }
-        }
-        .password_row {
-          width: 100%;
-          .password_text{
-            max-width:82%;
-          }
-        }
-        form{
-          height: 60vh;
-          display: table;
-          width: 100%;
-          .vertial-adjust{
-            display: table-cell;
-            vertical-align: middle;
-          }
-        }
+//   @media only screen and (min-width: 1700px) {
+//     .layout {
+//       .login_box {
+//         width: 45vh;
+//         height: 70vh;
+//         right: 0;
+//         /* top: 16vh; */
+//         bottom: 80px;
+//         .email_row {
+//           width: 100%;
+//           .user_text{
+//             max-width:82%;
+//           }
+//         }
+//         .password_row {
+//           width: 100%;
+//           .password_text{
+//             max-width:82%;
+//           }
+//         }
+//         form{
+//           height: 60vh;
+//           display: table;
+//           width: 100%;
+//           .vertial-adjust{
+//             display: table-cell;
+//             vertical-align: middle;
+//           }
+//         }
   
-      }
-    }
+//       }
+//     }
   
-  }
+//   }
   
 
 

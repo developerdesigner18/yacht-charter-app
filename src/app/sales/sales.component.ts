@@ -11,8 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SalesComponent implements OnInit {
   BASE_URI: string;
-  boatInfoAll: any;
+  boatInfoAll: any = [];
   boatInfoDivided: any = [];
+  filters: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,10 +26,10 @@ export class SalesComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       var btype = params.btype;
       if (btype === null || btype === undefined) {
-        this.salesService.getBoatInfoAll().subscribe(
+        this.filters = false;
+        this.salesService.getActiveBoatInfoAll().subscribe(
           res => {
             this.boatInfoAll = res.data
-            this.boatInfoDivided = []
             const chunkSize = 3;
             for (let i = 0; i < this.boatInfoAll.length; i += chunkSize) {
                 const chunk = this.boatInfoAll.slice(i, i + chunkSize);
@@ -37,18 +38,17 @@ export class SalesComponent implements OnInit {
     
             console.log('####sales', this.boatInfoAll);
             console.log('####sales-divided', this.boatInfoDivided);
-    
-            if (!res.success) { Notiflix.Notify.failure(res.error); }
+            if (!res.body.success) { Notiflix.Notify.failure(res.body.message); }
           },
           err => {        
-            Notiflix.Notify.failure(err.error.message);
+            // Notiflix.Notify.failure(err.error.message);
           }
         );
       } else {
+        this.filters = true;
         this.salesService.getBoatInfoAllByType(btype).subscribe(
           res => {
             this.boatInfoAll = res.data
-            this.boatInfoDivided = []
             const chunkSize = 3;
             for (let i = 0; i < this.boatInfoAll.length; i += chunkSize) {
                 const chunk = this.boatInfoAll.slice(i, i + chunkSize);
@@ -57,11 +57,12 @@ export class SalesComponent implements OnInit {
     
             console.log('####sales_by_type', this.boatInfoAll);
             console.log('####sales_by_type-divided', this.boatInfoDivided);
-    
-            if (!res.success) { Notiflix.Notify.failure(res.error); }
+            if (!res.body.success) { Notiflix.Notify.failure(res.body.message); }
           },
-          err => {        
-            Notiflix.Notify.failure(err.error.message);
+          err => {
+            this.boatInfoAll = [];
+            this.boatInfoDivided = [];
+            // Notiflix.Notify.failure(err.message);
           }
         );
       }
