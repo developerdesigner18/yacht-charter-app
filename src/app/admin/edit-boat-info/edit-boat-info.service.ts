@@ -31,6 +31,13 @@ export class EditBoatInfoService {
     )
   }
 
+  insertBoatInfo(payload: any): Observable<any> {
+    let header = this.initHeaders();
+    return this.httpClient.post(`${this.BASE_URI}/api/boat/insertBoatInfo`, payload, { headers: header, observe: 'response' as 'body'}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
   updateBoatInfo(boat_id: any, payload: {
   }): Observable<any> {
     let header = this.initHeaders();
@@ -40,6 +47,13 @@ export class EditBoatInfoService {
   }
 
     
+  deleteBoatImage(boat_id: any, image_id: any): Observable<any> {
+    let header = this.initHeaders();
+    return this.httpClient.delete(`${this.BASE_URI}/api/boat/deleteBoatImage`, { params: { bid: boat_id, iid: image_id }, headers: header, observe: 'response' as 'body'}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
   deleteBoatInfo(boat_id: any): Observable<any> {
     let header = this.initHeaders();
     return this.httpClient.delete(`${this.BASE_URI}/api/boat/deleteBoatInfo`, { params: { bid: boat_id }, headers: header, observe: 'response' as 'body'}).pipe(
@@ -57,7 +71,7 @@ export class EditBoatInfoService {
 
     headers = headers
     .append('Access-Control-Allow-Origin', '*')
-    .append('Content-Type', 'undefined')
+    // .append('Content-Type', 'undefined')
     .append('Pragma', 'no-cache')
     .append('charset', 'utf-8')
     

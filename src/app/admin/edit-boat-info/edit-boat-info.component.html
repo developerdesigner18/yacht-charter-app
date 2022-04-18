@@ -31,7 +31,7 @@
                                 <div class="row">
                                     <div class="col-sm-8 d-flex justify-content-start"><h2>Boat <b>Details</b></h2></div>
                                     <div class="col-sm-4 d-flex justify-content-end" style="height: 38px;">
-                                        <button (click)="insertBoatInfo()" type="button" class="add-new" style="color: white;     padding: 0px 10px;
+                                        <button (click)="insertBoatInfo()" type="button" class="add-new" style="color: white; padding: 0px 10px;
                                         background: linear-gradient(130deg, #1e3252 0%, #1e3252ab 100%); border-radius: 5px;"><i class="fa fa-plus"></i> Add New</button>
                                     </div>
                                 </div>
@@ -74,16 +74,30 @@
                 </div>
             </section>
 
-            <form id="boat_form" [formGroup]="editBoatInfoForm" (ngSubmit)="submitData()" >
+            <form id="boat_form" [formGroup]="boatInfoForm" (ngSubmit)="submitData()" *ngIf="show_form" [@enterAnimation]>
                 <ul class="form-section page-section">
                     <li id="cid_1" class="form-input-wide" data-type="control_head">
-                        <div class="form-header-group header-large">
+                        <div class="d-flex form-header-group header-large">
                             <div class="header-text httal htvam">
                                 <h1 id="header_1" class="form-header" data-component="header">
                                     Update Boat Information
                                 </h1>
                                 <div id="subHeader_1" class="form-subHeader">
                                     Please edit the information carefully by double-checking it with the current Boat Information.
+                                </div>
+                            </div>
+                            <div style="padding-top: 15px;">
+                                <div (click)="resetForm()" style="
+                                vertical-align: top;
+                                display: inline-block;
+                                border-radius: 60px;
+                                box-shadow: 0 0 2px #888;
+                                padding: 8px 14px;
+                                margin-left: 15px;
+                                cursor: pointer;
+                                color: #fff;
+                                background: #1e3252;">
+                                    <i class="fa fa-close" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +157,7 @@
                                                 </div>
                                                 <div class="inputContainer" role="button" aria-label="Upload a File
                                                     Drag and drop files here" tabindex="0">
-                                                    <input class="fileupload-input" id="input_7" (change)="onUpload($event)"
+                                                    <input class="fileupload-input" id="input_7" (change)="onCoverImageUpload($event)"
                                                         type="file" accept="image/jpeg,image/jpg,image/png" name="file" aria-labelledby="label_7" aria-hidden="true" tabindex="-1" />
                                                 </div>
                                                 <label class="form-sub-label" for="uploadVideo"
@@ -166,19 +180,19 @@
                             </div>
                         </div>
                         <div style="display: flex; flex-direction: row;">
-                            <div style="padding-top: 15px;">
+                            <div style="padding-top: 15px;" *ngIf="boatInfoById.length != 0">
                                 <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Current Preview </label>
                                 <img width="525" style="padding-left: 10px;"
                                 src="{{BASE_URI}}{{boatInfoById?.cover_image}}"
                                 class="attachment-large size-large" alt="Boat Image" loading="lazy"
                                 sizes="100vw">
                             </div>
-                            <div style="padding-top: 15px;" *ngIf="image_1_url">
+                            <div style="padding-top: 15px;" *ngIf="cover_image_url">
                                 <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> New Preview </label>
                                 <img width="525" style="padding-left: 10px;"
                                 class="attachment-large size-large" alt="Boat Image" loading="lazy" sizes="100vw"
-                                [src]="image_1_url">
-                                <div (click)="remove_photo()" style="
+                                [src]="cover_image_url">
+                                <div (click)="removeCoverImage()" style="
                                 vertical-align: top;
                                 display: inline-block;
                                 border-radius: 60px;
@@ -186,100 +200,155 @@
                                 padding: 8px 14px;
                                 margin-left: 15px;
                                 cursor: pointer;">
-                                    <i class="fa fa-close" *ngIf="image_1_url" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="form-line" data-type="control_text" id="id_5">
-                        <div id="cid_5" class="form-input-wide" data-layout="full">
-                            <div id="text_5" class="form-html" data-component="text">
-                                Make sure your video is no longer than 2 minutes. Make sure you own the right to use all
-                                music &amp; images on the video. Make sure your video does not containt inappropriate
-                                language, images, or sounds.&nbsp;
-                            </div>
-                        </div>
-                    </li>
-                    <li class="form-line" data-type="control_email" id="id_4">
-                        <label class="form-label form-label-top form-label-auto" id="label_4" for="input_4"> Tag Line </label>
-                        <div id="cid_4" class="form-input-wide" data-layout="half">
-                            <span class="form-sub-label-container" style="vertical-align:top">
-                                <input type="text" id="input_4" name="q4_email4" class="form-textbox"
-                                    data-defaultvalue="" style="width:310px" size="310" value="" formControlName="tag_line"
-                                    placeholder="ex: Explore. Discover. Live." data-component="email"
-                                    aria-labelledby="label_4 sublabel_input_4">
-                                <label class="form-sub-label" for="input_4" id="sublabel_input_4" style="min-height:13px"
-                                    aria-hidden="false"> Tag Line </label>
-                            </span>
-                        </div>
-                    </li>
-                    <li class="form-line" data-type="control_fullname" id="id_3">
-                        <label class="form-label form-label-top form-label-auto" id="label_3" for="first_3"> Section 1 </label>
-                        <div id="cid_3" class="form-input-wide" data-layout="full">
-                            <div data-wrapper-react="true">
-                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
-                                    <input type="text" id="first_3" name="q3_name[first]" class="form-textbox"
-                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="heading_1"
-                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
-                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
-                                        style="min-height:13px" aria-hidden="false"> Heading </label>
-                                </span>
-                                <!-- <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
-                                    <input type="text" id="last_3" name="q3_name[last]" class="form-textbox"
-                                        data-defaultvalue="" autocomplete="section-input_3 family-name" size="15" value=""
-                                        data-component="last" aria-labelledby="label_3 sublabel_3_last">
-                                    <label class="form-sub-label" for="last_3" id="sublabel_3_last" style="min-height:13px"
-                                        aria-hidden="false"> Last Name </label>
-                                </span> -->
-                                <div id="cid_8" class="form-input-wide" data-layout="full">
-                                    <textarea id="input_8" class="form-textarea custom-hint-group form-custom-hint"
-                                        name="q8_comments" style="width:648px;height:163px" data-component="textarea"
-                                        aria-labelledby="label_8" data-customhint="Type here..." customhinted="true"
-                                        placeholder="Type here..." spellcheck="false" formControlName="description_1"></textarea>
-                                        <label class="form-sub-label" for="first_3" id="sublabel_3_first"
-                                        style="min-height:13px" aria-hidden="false"> Description </label>
+                                    <i class="fa fa-close" *ngIf="cover_image_url" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="form-line" data-type="control_fullname" id="id_3">
-                        <label class="form-label form-label-top form-label-auto" id="label_3" for="first_3"> Section 2 </label>
-                        <div id="cid_3" class="form-input-wide" data-layout="full">
+                        <label class="form-label form-label-top form-label-auto" id="label_3" for="first_3"> Primary Information </label>
+                        <div id="cid_3" class="form-input-wide" data-layout="full" formGroupName="boat_info">
                             <div data-wrapper-react="true">
                                 <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
                                     <input type="text" id="first_3" name="q3_name[first]" class="form-textbox"
-                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="heading_2"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="name"
                                         data-component="first" aria-labelledby="label_3 sublabel_3_first">
                                     <label class="form-sub-label" for="first_3" id="sublabel_3_first"
-                                        style="min-height:13px" aria-hidden="false"> Heading </label>
+                                        style="min-height:13px" aria-hidden="false"> Boat Name </label>
+                                </span>
+                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                    <input type="number" id="first_3" name="q3_name[first]" class="form-textbox"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="price"
+                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
+                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
+                                        style="min-height:13px" aria-hidden="false"> Boat Price (in SEK) </label>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="form-line" data-type="control_fullname" id="id_3">
+                        <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Boat Type </label>
+                        <div id="cid_3" class="form-input-wide" data-layout="full">
+                            <div class="creation_radio_content">
+                                <input type="radio" id="wilma-28" name="boat_type" [checked]="boatInfoForm.value?.boat_type" formControlName="boat_type" value="Wilma 28">
+                                <label for="wilma-28" style="padding: 5px 0px 0px 5px;">Wilma 28</label>
+                            </div>
+                            <div class="creation_radio_content">
+                                <input type="radio" id="wilma-28-open" name="boat_type" [checked]="boatInfoForm.value?.boat_type" formControlName="boat_type" value="Wilma 28 Open">
+                                <label for="wilma-28-open" style="padding: 5px 0px 0px 5px;">Wilma 28 Open</label>
+                            </div>
+                            <div class="creation_radio_content">
+                                <input type="radio" id="vaddosnipan-sloep" name="boat_type" [checked]="boatInfoForm.value?.boat_type" formControlName="boat_type" value="Vaddosnipan Sloep">
+                                <label for="vaddosnipan-sloep" style="padding: 5px 0px 0px 5px;">Vaddosnipan Sloep</label>
+                            </div>
+                            <div class="creation_radio_content">
+                                <input type="radio" id="brokered-boats" name="boat_type" [checked]="boatInfoForm.value?.boat_type" formControlName="boat_type" value="Brokered Boats">
+                                <label for="brokered-boats" style="padding: 5px 0px 0px 5px;">Brokered Boats</label>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="form-line" data-type="control_fullname" id="id_3">
+                        <label class="form-label form-label-top form-label-auto" id="label_3" for="first_3"> Specifications </label>
+                        <div id="cid_3" class="form-input-wide" data-layout="full" formGroupName="boat_info">
+                            <div data-wrapper-react="true">
+                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                    <input type="text" id="first_3" name="q3_name[first]" class="form-textbox"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="manufacturer"
+                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
+                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
+                                        style="min-height:38px" aria-hidden="false"> Manufacturer </label>
+                                </span>
+                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                    <input type="number" id="first_3" name="q3_name[first]" class="form-textbox"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="mfg_year"
+                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
+                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
+                                        style="min-height:38px" aria-hidden="false"> Manufacturing Year </label>
+                                </span>
+                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                    <input type="number" id="first_3" name="q3_name[first]" class="form-textbox"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="width"
+                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
+                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
+                                        style="min-height:38px" aria-hidden="false"> Width (in Metres)</label>
+                                </span>
+                            </div>
+                            <div data-wrapper-react="true">
+                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                    <input type="number" id="first_3" name="q3_name[first]" class="form-textbox"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="guest_capacity"
+                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
+                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
+                                        style="min-height:38px" aria-hidden="false"> Guest Capacity </label>
+                                </span>
+                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                    <input type="number" id="first_3" name="q3_name[first]" class="form-textbox"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="crew_capacity"
+                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
+                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
+                                        style="min-height:38px" aria-hidden="false"> Crew Capacity </label>
+                                </span>
+                            </div>
+                            <div data-wrapper-react="true">
+                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                    <input type="text" id="first_3" name="q3_name[first]" class="form-textbox"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="engine_type"
+                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
+                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
+                                        style="min-height:38px" aria-hidden="false"> Engine Type </label>
+                                </span>
+                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                    <input type="number" id="first_3" name="q3_name[first]" class="form-textbox"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="top_speed"
+                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
+                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
+                                        style="min-height:38px" aria-hidden="false"> Top Speed (in Knots) </label>
+                                </span>
+                            </div>
+                            <div data-wrapper-react="true">
+                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+                                    <input type="text" id="first_3" name="q3_name[first]" class="form-textbox"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="interior"
+                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
+                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
+                                        style="min-height:38px" aria-hidden="false"> Interior By </label>
                                 </span>
                                 <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
                                     <input type="text" id="first_3" name="q3_name[first]" class="form-textbox"
-                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="sub_heading_2"
+                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="exterior"
                                         data-component="first" aria-labelledby="label_3 sublabel_3_first">
                                     <label class="form-sub-label" for="first_3" id="sublabel_3_first"
-                                        style="min-height:13px" aria-hidden="false"> Sub-Heading </label>
+                                        style="min-height:38px" aria-hidden="false"> Exterior By </label>
                                 </span>
-                                <!-- <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
-                                    <input type="text" id="last_3" name="q3_name[last]" class="form-textbox"
-                                        data-defaultvalue="" autocomplete="section-input_3 family-name" size="15" value=""
-                                        data-component="last" aria-labelledby="label_3 sublabel_3_last">
-                                    <label class="form-sub-label" for="last_3" id="sublabel_3_last" style="min-height:13px"
-                                        aria-hidden="false"> Last Name </label>
-                                </span> -->
-                                <div id="cid_8" class="form-input-wide" data-layout="full">
-                                    <textarea id="input_8" class="form-textarea custom-hint-group form-custom-hint"
-                                        name="q8_comments" style="width:648px;height:163px" data-component="textarea"
-                                        aria-labelledby="label_8" data-customhint="Type here..." customhinted="true"
-                                        placeholder="Type here..." spellcheck="false" formControlName="description_2"></textarea>
-                                        <label class="form-sub-label" for="first_3" id="sublabel_3_first"
-                                        style="min-height:13px" aria-hidden="false"> Description </label>
-                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="form-line" data-type="control_fileupload" id="id_7" *ngIf="boatInfoById.length != 0">
+                        <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Current Images </label>
+                        <div style="padding-top: 15px;" *ngFor="let images of boatInfoById?.boat_images">
+                            <img width="200" style="padding: 5px;"
+                            src="{{BASE_URI}}{{images.name}}"
+                            class="attachment-large size-large" alt="Boat Images" loading="lazy"
+                            sizes="100vw">
+                            <div (click)="deleteBoatImage(boatInfoById?._id, images._id)" style="
+                                vertical-align: top;
+                                display: inline-block;
+                                border-radius: 60px;
+                                box-shadow: 0 0 2px #888;
+                                padding: 0px 7px;
+                                margin-right: 15px;
+                                cursor: pointer;
+                                position: relative;
+                                right: 22px;
+                                top: -4px;
+                                color: #fff;
+                                background-color: #798598;">
+                                <i class="fa fa-close" aria-hidden="true"></i>
                             </div>
                         </div>
                     </li>
                     <li class="form-line" data-type="control_fileupload" id="id_7">
-                        <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Upload Image 1 </label>
+                        <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Upload Boat Images </label>
                         <div id="cid_7" class="form-input-wide" data-layout="full">
                             <div class="jfQuestion-fields" data-wrapper-react="true">
                                 <div class="jfField isFilled">
@@ -287,7 +356,7 @@
                                         <!-- <div class="jfUpload-container">
                                             <div class="jfUpload-text-container">
                                                 <div class="jfUpload-icon forDesktop">
-                                                    <span class="iconSvg  dhtupload ">
+                                                    <span class="iconSvg dhtupload ">
                                                         <svg viewBox="0 0 54 47" version="1.1"
                                                             xmlns="http://www.w3.org/2000/svg">
                                                             <g stroke="none" strokewidth="1" fill="none">
@@ -303,9 +372,9 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="jfUpload-button-container">
+                                            <div class="jfUpload-button-container" style="display:none">
                                                 <div class="jfUpload-button" aria-hidden="true" tabindex="0"
-                                                    style="display:none" data-version="v2">
+                                                    data-version="v2">
                                                     Upload a File
                                                     <div class="jfUpload-heading forDesktop">
                                                         Drag and drop file here
@@ -318,9 +387,8 @@
                                         </div> -->
                                         <div class="jfUpload-files-container validate[multipleUpload]">
                                             <div class="qq-uploader">
-                                                <div class="qq-upload-drop-area" style="display: none;">
-                                                    <span>Drop file here to upload</span>
-                                                </div>
+                                                <div class="qq-upload-drop-area" style="display: none;"><span>Drop file
+                                                        here to upload</span></div>
                                                 <div class="qq-upload-button" aria-hidden="true"
                                                     style="position: relative; overflow: hidden; direction: ltr;">
                                                     Upload a File
@@ -332,9 +400,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="inputContainer" role="button" aria-label="Upload a File
-                                                        Drag and drop files here" tabindex="0"><input class="fileupload-input" id="input_7" (change)="onUpload($event)"
-                                                        type="file" name="file" aria-labelledby="label_7" aria-hidden="true"
-                                                        tabindex="-1"></div><label class="form-sub-label" for="uploadVideo"
+                                                    Drag and drop files here" tabindex="0">
+                                                    <input class="fileupload-input" id="input_7" (change)="onBoatImagesUpload($event)" multiple
+                                                        type="file" accept="image/jpeg,image/jpg,image/png" name="file" aria-labelledby="label_7" aria-hidden="true" tabindex="-1" />
+                                                </div>
+                                                <label class="form-sub-label" for="uploadVideo"
                                                     id="label_uploadVideo"></label><span style="display:none"
                                                     class="multipleFileUploadLabels cancelText">Cancel</span><span
                                                     style="display:none" class="multipleFileUploadLabels ofText">of</span>
@@ -353,20 +423,28 @@
                                 </span>
                             </div>
                         </div>
-                        <div style="display: flex; flex-direction: row;">
-                            <div style="padding-top: 15px;">
-                                <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Current Preview </label>
-                                <img width="525" style="padding-left: 10px;"
-                                src="{{BASE_URI}}{{boatInfoDataAll?.media?.image_1}}"
-                                class="attachment-large size-large" alt="Boat Image" loading="lazy"
-                                sizes="100vw">
-                            </div>
-                            <div style="padding-top: 15px;">
-                                <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> New Preview </label>
-                                <img width="525" style="padding-left: 10px;"
-                                src="{{BASE_URI}}{{boatInfoDataAll?.media?.image_1}}"
-                                class="attachment-large size-large" alt="Boat Image" loading="lazy"
-                                sizes="100vw">
+                    </li>
+                    <li class="form-line" data-type="control_fileupload" id="id_7" *ngIf="boat_images_url.length != 0">
+                        <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7"> Uploaded Images </label>
+                        <div *ngFor="let url of boat_images_url; let i = index">
+                            <img width="200" style="padding: 5px;"
+                            [src]="url"
+                            class="attachment-large size-large" alt="Boat Images" loading="lazy"
+                            sizes="100vw">
+                            <div (click)="remove_image(i)" style="
+                                vertical-align: top;
+                                display: inline-block;
+                                border-radius: 60px;
+                                box-shadow: 0 0 2px #888;
+                                padding: 0px 7px;
+                                margin-right: 15px;
+                                cursor: pointer;
+                                position: relative;
+                                right: 22px;
+                                top: -4px;
+                                color: #fff;
+                                background-color: #798598;">
+                                <i class="fa fa-close" *ngIf="boat_images_url.length != 0" aria-hidden="true"></i>
                             </div>
                         </div>
                     </li>
@@ -393,42 +471,6 @@
                             </div>
                         </div>
                     </li> -->
-                    <li class="form-line" data-type="control_fullname" id="id_3">
-                        <label class="form-label form-label-top form-label-auto" id="label_3" for="first_3"> Section 3 </label>
-                        <div id="cid_3" class="form-input-wide" data-layout="full">
-                            <div data-wrapper-react="true">
-                                <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
-                                    <input type="text" id="first_3" name="q3_name[first]" class="form-textbox"
-                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value="" formControlName="heading_3"
-                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
-                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
-                                        style="min-height:13px" aria-hidden="false"> Heading </label>
-                                </span>
-                                <!-- <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
-                                    <input type="text" id="first_3" name="q3_name[first]" class="form-textbox"
-                                        data-defaultvalue="" autocomplete="section-input_3 given-name" size="10" value=""
-                                        data-component="first" aria-labelledby="label_3 sublabel_3_first">
-                                    <label class="form-sub-label" for="first_3" id="sublabel_3_first"
-                                        style="min-height:13px" aria-hidden="false"> Sub-Heading </label>
-                                </span> -->
-                                <!-- <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
-                                    <input type="text" id="last_3" name="q3_name[last]" class="form-textbox"
-                                        data-defaultvalue="" autocomplete="section-input_3 family-name" size="15" value=""
-                                        data-component="last" aria-labelledby="label_3 sublabel_3_last">
-                                    <label class="form-sub-label" for="last_3" id="sublabel_3_last" style="min-height:13px"
-                                        aria-hidden="false"> Last Name </label>
-                                </span> -->
-                                <div id="cid_8" class="form-input-wide" data-layout="full">
-                                    <textarea id="input_8" class="form-textarea custom-hint-group form-custom-hint"
-                                        name="q8_comments" style="width:648px;height:163px" data-component="textarea"
-                                        aria-labelledby="label_8" data-customhint="Type here..." customhinted="true"
-                                        placeholder="Type here..." spellcheck="false" formControlName="description_3"></textarea>
-                                        <label class="form-sub-label" for="first_3" id="sublabel_3_first"
-                                        style="min-height:13px" aria-hidden="false"> Description </label>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
                     <!-- <li class="form-line" data-type="control_textarea" id="id_8">
                         <label class="form-label form-label-top form-label-auto" id="label_8" for="input_8"> Description
                         </label>
