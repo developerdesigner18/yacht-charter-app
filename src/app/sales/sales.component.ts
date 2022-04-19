@@ -25,8 +25,15 @@ export class SalesComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       var btype = params.btype;
+      Notiflix.Loading.standard({
+        cssAnimationDuration: 2000,
+        backgroundColor: '0, 0, 0, 0.0',
+      },
+      )
       if (btype === null || btype === undefined) {
         this.filters = false;
+        this.boatInfoAll = [];
+        this.boatInfoDivided = [];
         this.salesService.getActiveBoatInfoAll().subscribe(
           res => {
             this.boatInfoAll = res.data
@@ -38,14 +45,20 @@ export class SalesComponent implements OnInit {
     
             console.log('####sales', this.boatInfoAll);
             console.log('####sales-divided', this.boatInfoDivided);
-            if (!res.body.success) { Notiflix.Notify.failure(res.body.message); }
+            Notiflix.Loading.remove()
+            if (!res.success) { Notiflix.Notify.failure(res.message); }
           },
-          err => {        
+          err => {
+            Notiflix.Loading.remove()
+            this.boatInfoAll = [];
+            this.boatInfoDivided = [];
             // Notiflix.Notify.failure(err.error.message);
           }
         );
       } else {
         this.filters = true;
+        this.boatInfoAll = [];
+        this.boatInfoDivided = [];
         this.salesService.getBoatInfoAllByType(btype).subscribe(
           res => {
             this.boatInfoAll = res.data
@@ -57,9 +70,11 @@ export class SalesComponent implements OnInit {
     
             console.log('####sales_by_type', this.boatInfoAll);
             console.log('####sales_by_type-divided', this.boatInfoDivided);
-            if (!res.body.success) { Notiflix.Notify.failure(res.body.message); }
+            Notiflix.Loading.remove()
+            if (!res.success) { Notiflix.Notify.failure(res.message); }
           },
           err => {
+            Notiflix.Loading.remove()
             this.boatInfoAll = [];
             this.boatInfoDivided = [];
             // Notiflix.Notify.failure(err.message);
