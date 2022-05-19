@@ -46,7 +46,7 @@ export class EditQSpdComponent implements OnInit {
         this.page_id = res.data._id
         this.qSpdData = res.data
         this.editQSpdForm.patchValue(res.data.content)        
-        console.log('###edit-home', this.qSpdData);
+        console.log('###edit-qspd', this.qSpdData);
         if (!res.success) { Notiflix.Notify.failure(res.error); }
       },
       err => {        
